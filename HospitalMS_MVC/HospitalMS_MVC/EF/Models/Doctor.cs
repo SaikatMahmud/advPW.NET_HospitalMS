@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -16,6 +17,13 @@ namespace HospitalMS_MVC.EF.Models
         public string Email { get; set; }
         public DateTime JoinDate { get; set; }
         public int DeptId { get; set; }
+        [ForeignKey("DeptId")]
+        public virtual Department Department{ get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
+        public Doctor()
+        {
+            Appointments = new List<Appointment>();
+        }
 
     }
 }

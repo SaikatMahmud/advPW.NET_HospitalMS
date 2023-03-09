@@ -9,6 +9,13 @@ namespace HospitalMS_MVC.EF.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public virtual ICollection<Doctor> Doctors { get; set; }
+        public virtual ICollection<Staff> Staffs { get; set; }
+        public Department()
+        {
+            Doctors = new List<Doctor>();
+            Staffs = new List<Staff>();
+        }
 
     }
 }

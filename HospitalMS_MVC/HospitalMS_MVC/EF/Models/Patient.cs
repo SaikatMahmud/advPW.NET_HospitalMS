@@ -15,6 +15,12 @@ namespace HospitalMS_MVC.EF.Models
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
+        public Patient()
+        {
+            Prescriptions = new List<Prescription>();
+            Appointments = new List<Appointment>();
+        }
     }
 }

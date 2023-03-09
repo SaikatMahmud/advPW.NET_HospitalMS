@@ -10,5 +10,6 @@ namespace HospitalMS_MVC.EF.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int BedCout { get; set; }
+        public int Rent { get; set; }
     }
 }

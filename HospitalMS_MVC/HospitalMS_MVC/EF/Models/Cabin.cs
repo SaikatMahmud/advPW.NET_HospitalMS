@@ -11,6 +11,7 @@ namespace HospitalMS_MVC.EF.Models
         public int CabinNo { get; set; }
         public int PatientBed { get; set; }
         public int GuestBed { get; set; }
+        public int Rent { get; set; }
         public string Category { get; set; }
 
     }
