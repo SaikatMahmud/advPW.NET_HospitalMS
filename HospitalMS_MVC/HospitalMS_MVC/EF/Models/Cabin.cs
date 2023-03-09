@@ -13,6 +13,11 @@ namespace HospitalMS_MVC.EF.Models
         public int GuestBed { get; set; }
         public int Rent { get; set; }
         public string Category { get; set; }
+        public virtual ICollection<IPDAdmit> IPDAdmits { get; set; }
+        public Cabin()
+        {
+            IPDAdmits = new List<IPDAdmit>();
+        }
 
     }
 }

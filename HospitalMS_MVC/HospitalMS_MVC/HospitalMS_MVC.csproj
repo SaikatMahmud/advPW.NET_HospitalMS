@@ -129,17 +129,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EF\HMSDb.cs" />
-    <Compile Include="EF\Models\AvailableDiag.cs" />
+    <Compile Include="EF\Models\DiagList.cs" />
     <Compile Include="EF\Models\Appointment.cs" />
-    <Compile Include="EF\Models\Bill.cs" />
+    <Compile Include="EF\Models\IPDAdmit.cs" />
+    <Compile Include="EF\Models\OPDBill.cs" />
     <Compile Include="EF\Models\Cabin.cs" />
     <Compile Include="EF\Models\Department.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
-    <Compile Include="EF\Models\OrderedDiag.cs" />
+    <Compile Include="EF\Models\PerformDiag.cs" />
     <Compile Include="EF\Models\Patient.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\Staff.cs" />
-    <Compile Include="EF\Models\DiagRecord.cs" />
     <Compile Include="EF\Models\Ward.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,6 +151,22 @@
     <Compile Include="Migrations\202303090941228_TableColumnAdded.cs" />
     <Compile Include="Migrations\202303090941228_TableColumnAdded.designer.cs">
       <DependentUpon>202303090941228_TableColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303092008274_ForeignKey.cs" />
+    <Compile Include="Migrations\202303092008274_ForeignKey.designer.cs">
+      <DependentUpon>202303092008274_ForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303092014500_ForeignKey1.cs" />
+    <Compile Include="Migrations\202303092014500_ForeignKey1.designer.cs">
+      <DependentUpon>202303092014500_ForeignKey1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303092027070_ForeignKey_fixed.cs" />
+    <Compile Include="Migrations\202303092027070_ForeignKey_fixed.designer.cs">
+      <DependentUpon>202303092027070_ForeignKey_fixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303092041015_ForeignKey_annotation.cs" />
+    <Compile Include="Migrations\202303092041015_ForeignKey_annotation.designer.cs">
+      <DependentUpon>202303092041015_ForeignKey_annotation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,6 +231,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303090941228_TableColumnAdded.resx">
       <DependentUpon>202303090941228_TableColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303092008274_ForeignKey.resx">
+      <DependentUpon>202303092008274_ForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303092014500_ForeignKey1.resx">
+      <DependentUpon>202303092014500_ForeignKey1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303092027070_ForeignKey_fixed.resx">
+      <DependentUpon>202303092027070_ForeignKey_fixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303092041015_ForeignKey_annotation.resx">
+      <DependentUpon>202303092041015_ForeignKey_annotation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

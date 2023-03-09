@@ -84,3 +84,7 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalM
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.initialTableCreate.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.csproj.GenerateResource.cache
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.TableColumnAdded.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.ForeignKey.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.ForeignKey1.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.ForeignKey_fixed.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.ForeignKey_annotation.resources
