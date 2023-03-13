@@ -21,8 +21,12 @@ namespace HospitalMS_MVC.EF.Models
         [StringLength(20)]
         public string Mobile { get; set; }
         public string Email { get; set; }
+        public string Room { get; set; }
+        public DateTime StayFrom { get; set; }
+        public DateTime StayTill { get; set; }
         public DateTime JoinDate { get; set; }
         public int DeptId { get; set; }
+        public int Salary { get; set; }
         [ForeignKey("DeptId")]
         public virtual Department Department{ get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }

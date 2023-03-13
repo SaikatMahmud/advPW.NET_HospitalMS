@@ -10,7 +10,7 @@ namespace HospitalMS_MVC.EF.Models
     {
         public int Id { get; set; }
         public int PatientId { get; set; }
-        public string Details { get; set; }
+        public string Details { get; set; } //modify needed
         public int DoctorId { get; set; }
         public DateTime Date { get; set; }
         [ForeignKey("PatientId")]

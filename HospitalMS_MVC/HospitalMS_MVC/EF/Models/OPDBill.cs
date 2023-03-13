@@ -15,6 +15,8 @@ namespace HospitalMS_MVC.EF.Models
         public int PatientId { get; set; }
         public DateTime BillDate { get; set; }
         public virtual ICollection<PerformDiag> PerformDiags { get; set; }
+        public virtual Finance Finance { get; set; }
+
         public OPDBill()
         {
             PerformDiags = new List<PerformDiag>();

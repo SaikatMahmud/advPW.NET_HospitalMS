@@ -16,6 +16,7 @@ namespace HospitalMS_MVC.EF.Models
         public string Email { get; set; }
         public DateTime JoinDate { get; set; }
         public int DeptId { get; set; }
+        public int Salary { get; set; }
         [ForeignKey("DeptId")]
         public virtual Department Department { get; set; }
     }
