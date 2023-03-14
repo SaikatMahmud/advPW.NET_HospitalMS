@@ -136,6 +136,7 @@
     <Compile Include="EF\Models\Cabin.cs" />
     <Compile Include="EF\Models\Department.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
+    <Compile Include="EF\Models\OPDBillDetails.cs" />
     <Compile Include="EF\Models\PerformDiag.cs" />
     <Compile Include="EF\Models\Patient.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
@@ -167,6 +168,10 @@
     <Compile Include="Migrations\202303092041015_ForeignKey_annotation.cs" />
     <Compile Include="Migrations\202303092041015_ForeignKey_annotation.designer.cs">
       <DependentUpon>202303092041015_ForeignKey_annotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303141809157_edit_after_figma.cs" />
+    <Compile Include="Migrations\202303141809157_edit_after_figma.designer.cs">
+      <DependentUpon>202303141809157_edit_after_figma.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303092041015_ForeignKey_annotation.resx">
       <DependentUpon>202303092041015_ForeignKey_annotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303141809157_edit_after_figma.resx">
+      <DependentUpon>202303141809157_edit_after_figma.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -88,3 +88,4 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalM
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.ForeignKey1.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.ForeignKey_fixed.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.ForeignKey_annotation.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_MVC\HospitalMS_MVC\obj\Debug\HospitalMS_MVC.Migrations.edit_after_figma.resources

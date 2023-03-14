@@ -31,9 +31,11 @@ namespace HospitalMS_MVC.EF.Models
         [ForeignKey("DeptId")]
         public virtual Department Department{ get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
+        public virtual ICollection<OPDBillDetails> OPDBillDetails { get; set; }
         public Doctor()
         {
             Appointments = new List<Appointment>();
+            OPDBillDetails = new List<OPDBillDetails>();
         }
 
     }

@@ -12,14 +12,13 @@ namespace HospitalMS_MVC.EF.Models
         public float BillAmount { get; set; }
         [Required]
         public float PaidAmount { get; set; }
+       // public int Discount { get; set; }
         public int PatientId { get; set; }
         public DateTime BillDate { get; set; }
-        public virtual ICollection<PerformDiag> PerformDiags { get; set; }
-        public virtual Finance Finance { get; set; }
-
+        public virtual ICollection<OPDBillDetails> OPDBillDetails { get; set; }
         public OPDBill()
         {
-            PerformDiags = new List<PerformDiag>();
+            OPDBillDetails = new List<OPDBillDetails>();
         }
     }
 }
