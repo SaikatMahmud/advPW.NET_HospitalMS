@@ -25,11 +25,14 @@ namespace HospitalMS_MVC.EF.Models
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<IPDAdmit> IPDAdmits { get; set; }
         public virtual ICollection<PerformDiag> PerformDiags { get; set; }
+        public virtual ICollection<OPDBill> OPDBills { get; set; }
         public Patient()
         {
             Prescriptions = new List<Prescription>();
             Appointments = new List<Appointment>();
             IPDAdmits = new List<IPDAdmit>();
-            PerformDiags = new List<PerformDiag>();        }
+            PerformDiags = new List<PerformDiag>();
+            OPDBills = new List<OPDBill>();
+        }
     }
 }
