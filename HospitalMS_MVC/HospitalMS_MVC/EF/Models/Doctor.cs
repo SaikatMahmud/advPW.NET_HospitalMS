@@ -27,6 +27,7 @@ namespace HospitalMS_MVC.EF.Models
         public DateTime JoinDate { get; set; }
         public int DeptId { get; set; }
         public int Salary { get; set; }
+        public int Fee { get; set; }
         [ForeignKey("DeptId")]
         public virtual Department Department{ get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
