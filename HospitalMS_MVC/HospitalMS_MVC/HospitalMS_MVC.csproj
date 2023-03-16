@@ -129,9 +129,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EF\HMSDb.cs" />
+    <Compile Include="EF\Models\Complaint.cs" />
     <Compile Include="EF\Models\DiagList.cs" />
     <Compile Include="EF\Models\Appointment.cs" />
     <Compile Include="EF\Models\IPDAdmit.cs" />
+    <Compile Include="EF\Models\IPDBill.cs" />
+    <Compile Include="EF\Models\LeaveApplication.cs" />
     <Compile Include="EF\Models\OPDBill.cs" />
     <Compile Include="EF\Models\Cabin.cs" />
     <Compile Include="EF\Models\Department.cs" />
@@ -141,6 +144,7 @@
     <Compile Include="EF\Models\Patient.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\Staff.cs" />
+    <Compile Include="EF\Models\User.cs" />
     <Compile Include="EF\Models\Ward.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
