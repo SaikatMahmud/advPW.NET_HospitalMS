@@ -15,9 +15,17 @@ namespace HospitalMS_MVC.EF.Models
         public string Mobile { get; set; }
         public string Email { get; set; }
         public DateTime JoinDate { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Type { get; set; }
         public int DeptId { get; set; }
         public int Salary { get; set; }
         [ForeignKey("DeptId")]
         public virtual Department Department { get; set; }
+        public virtual ICollection<LeaveApplication> LeaveApplications { get; set; }
+        public Staff()
+        {
+            LeaveApplications = new List<LeaveApplication>();
+        }
     }
 }

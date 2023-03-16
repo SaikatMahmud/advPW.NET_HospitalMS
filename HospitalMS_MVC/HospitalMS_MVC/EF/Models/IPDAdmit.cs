@@ -9,6 +9,7 @@ namespace HospitalMS_MVC.EF.Models
 {
     public class IPDAdmit
     {
+        [Key, ForeignKey("IPDBill")]
         public int Id { get; set; }
         public int PatientId { get; set; }
         public int NightCount { get; set; }
@@ -22,6 +23,7 @@ namespace HospitalMS_MVC.EF.Models
         public virtual Cabin Cabin { get; set; } 
         [ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }
+        public virtual IPDBill IPDBill { get; set; }
 
     }
 }

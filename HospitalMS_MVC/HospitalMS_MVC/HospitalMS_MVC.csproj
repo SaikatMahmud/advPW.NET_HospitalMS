@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EF\HMSDb.cs" />
+    <Compile Include="EF\Models\Admin.cs" />
     <Compile Include="EF\Models\Complaint.cs" />
     <Compile Include="EF\Models\DiagList.cs" />
     <Compile Include="EF\Models\Appointment.cs" />
@@ -144,7 +145,6 @@
     <Compile Include="EF\Models\Patient.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\Staff.cs" />
-    <Compile Include="EF\Models\User.cs" />
     <Compile Include="EF\Models\Ward.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,6 +176,10 @@
     <Compile Include="Migrations\202303141809157_edit_after_figma.cs" />
     <Compile Include="Migrations\202303141809157_edit_after_figma.designer.cs">
       <DependentUpon>202303141809157_edit_after_figma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303161554350_3_new_table.cs" />
+    <Compile Include="Migrations\202303161554350_3_new_table.designer.cs">
+      <DependentUpon>202303161554350_3_new_table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -255,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303141809157_edit_after_figma.resx">
       <DependentUpon>202303141809157_edit_after_figma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303161554350_3_new_table.resx">
+      <DependentUpon>202303161554350_3_new_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
