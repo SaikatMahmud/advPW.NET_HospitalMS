@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessFactory.cs" />
     <Compile Include="HMSDb.cs" />
+    <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202303251642153_tier_db_create.cs" />
     <Compile Include="Migrations\202303251642153_tier_db_create.designer.cs">
       <DependentUpon>202303251642153_tier_db_create.cs</DependentUpon>
@@ -76,6 +78,8 @@
     <Compile Include="Models\Ward.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\PatientRepo.cs" />
+    <Compile Include="Repos\PatientRepoV_0.cs" />
+    <Compile Include="Repos\Repo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -86,6 +90,7 @@
       <DependentUpon>202303251642153_tier_db_create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
