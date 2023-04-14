@@ -27,7 +27,7 @@ namespace DAL.Repos
             return db.Patients.Find(id);
         }
 
-        public Patient Insert(Patient obj)
+        public Patient Create(Patient obj)
         {
             db.Patients.Add(obj);
             if (db.SaveChanges() > 0) return obj;

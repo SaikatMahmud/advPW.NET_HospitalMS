@@ -21,17 +21,26 @@ namespace BLL.Services
             var data = DataAccessFactory.PatientData().Get();
             return Convert(data);
         }
-        public static object Get(int id)
+        public static PatientDTO Get(int id)
         {
-            return PatientRepoV_0.Get(id);
+            return Convert(DataAccessFactory.PatientData().Get(id));
         }
-        public static bool Create(Patient patient)
+       
+        public static bool Create(PatientDTO patient)
         {
-            return PatientRepoV_0.Create(patient);
+            var data = Convert(patient);
+            var res = DataAccessFactory.PatientData().Create(data);
+
+            if (res != null) return true;
+            return false;
         }
-        public static bool Update(Patient patient)
+        public static bool Update(PatientDTO patient)
         {
-            return PatientRepoV_0.Update(patient);
+            var data = Convert(patient);
+            var res = DataAccessFactory.PatientData().Update(data);
+
+            if (res != null) return true;
+            return false;
         }
 
 

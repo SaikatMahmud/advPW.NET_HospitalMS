@@ -10,7 +10,7 @@ namespace DAL.Interfaces
     {
         List<TYPE> Get();
         TYPE Get(ID id);
-        RET Insert(TYPE obj);
+        RET Create(TYPE obj);
         RET Update(TYPE obj);
         bool Delete(ID id);
     }
