@@ -58,6 +58,10 @@
     <Compile Include="Migrations\202303251642153_tier_db_create.designer.cs">
       <DependentUpon>202303251642153_tier_db_create.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304181621132_UserTokenDB.cs" />
+    <Compile Include="Migrations\202304181621132_UserTokenDB.designer.cs">
+      <DependentUpon>202304181621132_UserTokenDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -75,11 +79,31 @@
     <Compile Include="Models\PerformDiag.cs" />
     <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\Token.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Ward.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\AdminRepo.cs" />
+    <Compile Include="Repos\AppointmentRepo.cs" />
+    <Compile Include="Repos\CabinRepo.cs" />
+    <Compile Include="Repos\ComplaintRepo.cs" />
+    <Compile Include="Repos\DepartmentRepo.cs" />
+    <Compile Include="Repos\DiagListRepo.cs" />
+    <Compile Include="Repos\DoctorRepo.cs" />
+    <Compile Include="Repos\IPDAdmitRepo.cs" />
+    <Compile Include="Repos\IPDBillRepo.cs" />
+    <Compile Include="Repos\LeaveApplicationRepo.cs" />
+    <Compile Include="Repos\OPDBillDetailsRepo.cs" />
+    <Compile Include="Repos\OPDBillRepo.cs" />
     <Compile Include="Repos\PatientRepo.cs" />
     <Compile Include="Repos\PatientRepoV_0.cs" />
+    <Compile Include="Repos\PerformDiagRepo.cs" />
+    <Compile Include="Repos\PrescriptionRepo.cs" />
     <Compile Include="Repos\Repo.cs" />
+    <Compile Include="Repos\StaffRepo.cs" />
+    <Compile Include="Repos\TokenRepo.cs" />
+    <Compile Include="Repos\UserRepo.cs" />
+    <Compile Include="Repos\WardRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -88,6 +112,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202303251642153_tier_db_create.resx">
       <DependentUpon>202303251642153_tier_db_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304181621132_UserTokenDB.resx">
+      <DependentUpon>202304181621132_UserTokenDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -23,8 +23,6 @@ namespace DAL.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
-        public string Type { get; set; }
         public virtual ICollection<Prescription> Prescriptions { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<IPDAdmit> IPDAdmits { get; set; }

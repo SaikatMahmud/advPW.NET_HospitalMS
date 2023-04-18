@@ -12,3 +12,4 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\D
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.pdb
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.tier_db_create.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.UserTokenDB.resources
