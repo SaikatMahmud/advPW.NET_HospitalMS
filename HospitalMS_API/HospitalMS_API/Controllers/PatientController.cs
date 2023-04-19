@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using HospitalMS_API.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace HospitalMS_API.Controllers
 {
     public class PatientController : ApiController
     {
+        [Logged]
         [HttpGet]
         [Route("api/patient/all")]
         public HttpResponseMessage Get()
@@ -79,6 +81,5 @@ namespace HospitalMS_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message, Data = patient });
             }
         }
-
     }
 }

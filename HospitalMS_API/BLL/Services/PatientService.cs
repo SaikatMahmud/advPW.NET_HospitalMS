@@ -60,7 +60,6 @@ namespace BLL.Services
                     Email = patient.Email,
                     Address = patient.Address,
                     Username = patient.Username,
-                    Type = patient.Type,
                     Prescriptions = patient.Prescriptions.ToList(),
                     Appointments = patient.Appointments.ToList(),
                     IPDAdmits = patient.IPDAdmits.ToList(),
@@ -85,7 +84,7 @@ namespace BLL.Services
                 Email = patient.Email,
                 Address = patient.Address,
                 Username = patient.Username,
-                Type = patient.Type,
+               
             };
         }
         static PatientDTO Convert(Patient patient)
@@ -101,7 +100,6 @@ namespace BLL.Services
                 Email = patient.Email,
                 Address = patient.Address,
                 Username = patient.Username,
-                Type = patient.Type,
                 Prescriptions = patient.Prescriptions.ToList(),
                 Appointments = patient.Appointments.ToList(),
                 IPDAdmits = patient.IPDAdmits.ToList(),

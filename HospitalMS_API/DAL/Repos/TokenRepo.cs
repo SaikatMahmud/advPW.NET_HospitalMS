@@ -3,19 +3,22 @@ using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class TokenRepo : Repo, IRepo<Token, int, Token>
+    internal class TokenRepo : Repo, IRepo<Token, string, Token>
     {
         public Token Create(Token obj)
         {
-            throw new NotImplementedException();
+            db.Tokens.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
-        public bool Delete(int id)
+        public bool Delete(string id)
         {
             throw new NotImplementedException();
         }
@@ -25,14 +28,17 @@ namespace DAL.Repos
             throw new NotImplementedException();
         }
 
-        public Token Get(int id)
+        public Token Get(string id)
         {
-            throw new NotImplementedException();
+            return db.Tokens.FirstOrDefault(t => t.TKey.Equals(id));
         }
 
         public Token Update(Token obj)
         {
-            throw new NotImplementedException();
+            var exToken = Get(obj.TKey);
+            db.Entry(exToken).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

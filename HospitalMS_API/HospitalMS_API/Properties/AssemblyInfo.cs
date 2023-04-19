@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HospitalMS_API")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyCompany("HP")]
 [assembly: AssemblyProduct("HospitalMS_API")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2023")]
+[assembly: AssemblyCopyright("Copyright © HP 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8035dc25-af3a-4107-abad-208efed8a2cb")]
+[assembly: Guid("57bb05d9-03bf-492d-8915-35865ea48e25")]
 
 // Version information for an assembly consists of the following four values:
 //

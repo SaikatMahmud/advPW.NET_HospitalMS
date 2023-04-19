@@ -15,5 +15,13 @@ namespace DAL
         {
             return new PatientRepo();
         }
+        public static IAuth<bool> AuthData()
+        {
+            return new UserRepo();
+        }
+        public static IRepo<Token,string,Token> TokenData()
+        {
+            return new TokenRepo();
+        }
     }
 }

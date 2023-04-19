@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace DAL.Interfaces
 {
-    public class Class1
+    public interface IAuth<RET>
     {
+        RET Authenticate(string Username, string Password);
     }
 }
