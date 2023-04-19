@@ -13,6 +13,7 @@ namespace HospitalMS_API.Controllers
     public class PatientController : ApiController
     {
         [Logged]
+        [AdminAccess]
         [HttpGet]
         [Route("api/patient/all")]
         public HttpResponseMessage Get()
@@ -26,6 +27,7 @@ namespace HospitalMS_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+        [Logged]
         [HttpGet]
         [Route("api/patient/{id}")]
         public HttpResponseMessage Get(int id)

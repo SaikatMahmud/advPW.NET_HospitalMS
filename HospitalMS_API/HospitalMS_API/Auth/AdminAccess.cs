@@ -9,19 +9,16 @@ using System.Web.Http.Filters;
 
 namespace HospitalMS_API.Auth
 {
-    public class Logged : AuthorizationFilterAttribute
+    public class AdminAccess : AuthorizationFilterAttribute
     {
         public override void OnAuthorization(HttpActionContext actionContext)
         {
             var token = actionContext.Request.Headers.Authorization;
-            if (token == null)
+            if (AuthService.TokenUserType(token.ToString()) != "Admin")
             {
                 actionContext.Response =
-                    actionContext.Request.CreateResponse(System.Net.HttpStatusCode.Unauthorized, new {Msg = "No token supplied"});
-            }
-            else if(AuthService.IsTokenValid(token.ToString()) == null) {//if no token obj returned
-                actionContext.Response =
-                   actionContext.Request.CreateResponse(System.Net.HttpStatusCode.Unauthorized, new { Msg = "Supplied token is invalid or expired" });
+                  actionContext.Request.CreateResponse(System.Net.HttpStatusCode.Unauthorized,
+                  new { Msg = "Supplied token has no Admin access" });
             }
             base.OnAuthorization(actionContext);
         }

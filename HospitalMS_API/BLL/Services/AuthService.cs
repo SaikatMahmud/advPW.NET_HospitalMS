@@ -36,14 +36,29 @@ namespace BLL.Services
             }
             return null;
         }
-        public static bool IsTokenValid(string tkey)
+        public static TokenDTO IsTokenValid(string tkey)//return token obj
         {
             var extk = DataAccessFactory.TokenData().Get(tkey);
             if(extk != null && extk.ExpiredAt == null)
             {
-                return true;
+                var cfg = new MapperConfiguration(c =>
+                {
+                    c.CreateMap<Token, TokenDTO>();
+                });
+                var mapper = new Mapper(cfg);
+                return mapper.Map<TokenDTO>(extk);
             }
-            return false;
+            return null;
+        }
+        public static string TokenUserType(string tkey)//return token User type
+        {
+            var token = IsTokenValid(tkey);
+            if (token != null)
+            {
+                var user = DataAccessFactory.UserData().Get(token.CreatedBy);
+                return user.Type.ToString();
+            }
+            return null;
         }
         public static bool Logout(string tkey)
         {
