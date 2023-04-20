@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public Department Create(Department obj)
         {
-            throw new NotImplementedException();
+            db.Departments.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exDept = Get(id);
+            db.Departments.Remove(exDept);
+            return db.SaveChanges() > 0;
         }
 
         public List<Department> Get()
         {
-            throw new NotImplementedException();
+            return db.Departments.ToList();
         }
 
         public Department Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Departments.Find(id);
         }
 
         public Department Update(Department obj)
         {
-            throw new NotImplementedException();
+            var exDept = Get(obj.Id);
+            db.Entry(exDept).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

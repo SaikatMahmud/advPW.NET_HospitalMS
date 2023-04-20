@@ -15,6 +15,18 @@ namespace DAL
         {
             return new PatientRepo();
         }
+        public static IRepo<Doctor, int, Doctor> DoctorData()
+        {
+            return new DoctorRepo();
+        }  
+        public static IRepo<Staff, int, Staff> StaffData()
+        {
+            return new StaffRepo();
+        } 
+        public static IRepo<Department, int, Department> DepartmentData()
+        {
+            return new DepartmentRepo();
+        }
         public static IAuth<bool> AuthData()
         {
             return new UserRepo();

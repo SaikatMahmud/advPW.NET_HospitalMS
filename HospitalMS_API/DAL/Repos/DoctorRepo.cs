@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public Doctor Create(Doctor obj)
         {
-            throw new NotImplementedException();
+            db.Doctors.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exD = Get(id);
+            db.Doctors.Remove(exD);
+            return db.SaveChanges() > 0;
         }
 
         public List<Doctor> Get()
         {
-            throw new NotImplementedException();
+            return db.Doctors.ToList();
         }
 
         public Doctor Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Doctors.Find(id);
         }
 
         public Doctor Update(Doctor obj)
         {
-            throw new NotImplementedException();
+            var exDoctor = Get(obj.Id);
+            db.Entry(exDoctor).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

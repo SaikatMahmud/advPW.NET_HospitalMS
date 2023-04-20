@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public Staff Create(Staff obj)
         {
-            throw new NotImplementedException();
+            db.Staffs.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exS = Get(id);
+            db.Staffs.Remove(exS);
+            return db.SaveChanges() > 0;
         }
 
         public List<Staff> Get()
         {
-            throw new NotImplementedException();
+            return db.Staffs.ToList();
         }
 
         public Staff Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Staffs.Find(id);
         }
 
         public Staff Update(Staff obj)
         {
-            throw new NotImplementedException();
+            var exStaff = Get(obj.Id);
+            db.Entry(exStaff).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }
