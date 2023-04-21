@@ -95,8 +95,10 @@
     <Compile Include="Auth\AdminAccess.cs" />
     <Compile Include="Auth\Logged.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

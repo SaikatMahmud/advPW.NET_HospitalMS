@@ -1639,6 +1639,12 @@
             <param name="context">The context of the mapping</param>
             <returns>Result, typically build from the source resolution result</returns>
         </member>
+        <member name="T:AutoMapper.MapMemberInfo">
+            <summary>
+            Used to ensure we capture the concrete parent type. For virtual members, AutoMapper's GetMemberInfo methods will return a
+            MemberInfo whose ReflectedType is the base class - not source or destination being mapped.
+            </summary>
+        </member>
         <member name="T:AutoMapper.MemberList">
             <summary>
             Member list to check for configuration validation
