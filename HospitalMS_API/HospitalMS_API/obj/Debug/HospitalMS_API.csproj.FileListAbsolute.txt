@@ -76,3 +76,6 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\HospitalM
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\HospitalMS_API\obj\Debug\HospitalMS_API.csproj.CopyComplete
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\HospitalMS_API\obj\Debug\HospitalMS_API.dll
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\HospitalMS_API\obj\Debug\HospitalMS_API.pdb
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\HospitalMS_API\bin\System.Web.Cors.dll
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\HospitalMS_API\bin\System.Web.Http.Cors.dll
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\HospitalMS_API\bin\System.Web.Http.Cors.xml
