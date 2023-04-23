@@ -4,6 +4,7 @@ const AdminLogin = () => {
         // <nav class="navbar navbar-default">
         <nav class="navbar navbar-expand-sm bg-light justify-content-center">
         <div align="center">
+            <text><b>======== Admin ========</b></text><br/>
             <span> <Link to="/admin/dashboard">Dashboard</Link> </span>|
             <span> <Link to="/admin/doctor/list"> Doctors</Link> </span>|
             <span> <Link to="/admin/staff/list"> Staffs </Link></span>|

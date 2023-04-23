@@ -4,6 +4,7 @@ const RcpLogin = () => {
         // <nav class="navbar navbar-default">
         <nav class="navbar navbar-expand-sm bg-light justify-content-center">
             <div align="center">
+                <text><b>======== Receptionist ========</b></text><br/>
                 <span> <Link to="/receptionist/dashboard">Dashboard </Link> </span>|
                 <span> <Link to="/receptionist/doctors"> Doctors </Link> </span>|
                 <span> <Link to="/receptionist/appointment"> Appointments </Link></span>|

@@ -15,6 +15,7 @@ import AdminStaff from "./admin/AdminStaff";
 import AdminStat from "./admin/AdminStat";
 import AddDoctor from "./admin/AddDoctor";
 import AddStaff from "./admin/AddStaff";
+import EditDoctor from "./admin/EditDoctor";
 import RcpDashboard from "./receptionist/RcpDashboard";
 import RcpAppointment from "./receptionist/RcpAppointment";
 import RcpDoctor from "./receptionist/RcpDoctor";
@@ -80,6 +81,7 @@ const Main = () => {
                     <Route path="/admin/statistics" element={<AdminStat />} />
                     <Route path="/admin/doctor/add" element={<AddDoctor />} />
                     <Route path="/admin/staff/add" element={<AddStaff />} />
+                    <Route path="/doctor/edit/:id" element={<EditDoctor />} />
 
                     <Route path="/receptionist/dashboard" element={<RcpDashboard />} />
                     <Route path="/receptionist/appointment" element={<RcpAppointment />} />

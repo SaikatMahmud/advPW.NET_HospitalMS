@@ -30,7 +30,7 @@ namespace HospitalMS_API.Controllers
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.NotFound, new { Msg = "Not Authenticated", Data = login });
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { Msg = "Username or Password invalid", Data = login });
                 }
             }
             catch (Exception ex)

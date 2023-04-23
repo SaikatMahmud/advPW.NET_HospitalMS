@@ -4,6 +4,7 @@ const BeforeLogin = () => {
         // <nav class="navbar navbar-default">
         <nav class="navbar navbar-expand-sm bg-light justify-content-center">
         <div align="center">
+        <text><b>======== XYZ Hospital Management System ========</b></text><br/>
             <span> <Link to="/">Home</Link> </span>|
             <span> <Link to="/login"> Login</Link> </span>|
             <span> <Link to="/registration"> Register</Link> </span>|
