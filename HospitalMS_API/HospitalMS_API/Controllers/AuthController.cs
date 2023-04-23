@@ -1,4 +1,5 @@
 ﻿using BLL.Services;
+using HospitalMS_API.Auth;
 using HospitalMS_API.Models;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,11 @@ namespace HospitalMS_API.Controllers
         {
             try
             {
-                var res = AuthService.Authenticate(login.Username, login.Password);
-                if (res != null)
+                var token = AuthService.Authenticate(login.Username, login.Password);
+                if (token != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, new { Msg = "Authenticated", Data = res });
+                    var userType = AuthService.TokenUserType(token.TKey.ToString());
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Msg = "Authenticated", Data = token,userType });
                 }
                 else
                 {
@@ -36,14 +38,14 @@ namespace HospitalMS_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message, Data = login });
             }
         }
-
-        [HttpPost]
+        [Logged]
+        [HttpGet]
         [Route("api/logout")]
-        public HttpResponseMessage Logout(HttpActionContext context)
+        public HttpResponseMessage Logout()
         {
             try
             {
-                var res = AuthService.Logout(context.Request.Headers.Authorization.ToString());
+                var res = AuthService.Logout(Request.Headers.Authorization.ToString());
                 if (res)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, new { Msg = "Logout Success"});

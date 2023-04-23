@@ -18,6 +18,7 @@ const Login = () => {
             then((succ) => {
                 debugger;
                 localStorage.setItem('_authToken', succ.data.Data.TKey);
+                localStorage.setItem('_HMSuserType', succ.data.userType);
                // localStorage.setItem('_authUserId', succ.data.user_id);
                 navigate({ pathname: '/' });
                 window.location.reload();

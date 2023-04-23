@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace HospitalMS_API.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class DoctorController : ApiController
     {
         [HttpGet]
