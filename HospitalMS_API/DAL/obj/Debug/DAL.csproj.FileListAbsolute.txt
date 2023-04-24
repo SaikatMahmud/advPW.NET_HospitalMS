@@ -14,3 +14,4 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\D
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.dll
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.pdb
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.doctorTime.resources

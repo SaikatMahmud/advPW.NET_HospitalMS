@@ -4,6 +4,7 @@ using DAL;
 using DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,16 @@ namespace BLL.Services
                     c.CreateMap<Doctor, DoctorDTO>();
                 });
                 var mapper = new Mapper(cfg);
-                return mapper.Map<DoctorDTO>(data);
+                var mapped = mapper.Map<DoctorDTO>(data);
+                DateTime stayFrom = DateTime.ParseExact(mapped.StayFrom, "h:mm tt", CultureInfo.InvariantCulture);
+                DateTime stayTill = DateTime.ParseExact(mapped.StayTill, "h:mm tt", CultureInfo.InvariantCulture);
+                DateTime currentTime = DateTime.ParseExact(DateTime.Now.ToString("HH:mm tt"), "h:mm tt", CultureInfo.InvariantCulture);
+                if (currentTime >= stayFrom && currentTime <= stayTill)
+                {
+                    mapped.IsAvailable = true;
+                }
+                else { mapped.IsAvailable = false; }
+                return mapped;
             }
             return null;
         }
@@ -64,6 +74,10 @@ namespace BLL.Services
             var res = DataAccessFactory.DoctorData().Update(mapped);
             return (res != null) ? true : false;
 
+        }
+        public static bool Delete(int id)
+        {
+            return (DataAccessFactory.DoctorData().Delete(id));
         }
     }
 }

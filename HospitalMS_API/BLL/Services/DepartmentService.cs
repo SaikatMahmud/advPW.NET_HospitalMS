@@ -85,5 +85,9 @@ namespace BLL.Services
             return (res != null) ? true : false;
 
         }
+        public static bool Delete(int id)
+        {
+            return (DataAccessFactory.DepartmentData().Delete(id));
+        }
     }
 }

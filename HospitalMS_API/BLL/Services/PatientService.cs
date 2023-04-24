@@ -42,6 +42,10 @@ namespace BLL.Services
             if (res != null) return true;
             return false;
         }
+        public static bool Delete(int id)
+        {
+            return (DataAccessFactory.PatientData().Delete(id));
+        }
 
 
         static List<PatientDTO> Convert(List<Patient> patients)

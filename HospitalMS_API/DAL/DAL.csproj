@@ -67,6 +67,10 @@
     <Compile Include="Migrations\202304191408145_tokenUpdate.designer.cs">
       <DependentUpon>202304191408145_tokenUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304242012241_doctorTime.cs" />
+    <Compile Include="Migrations\202304242012241_doctorTime.designer.cs">
+      <DependentUpon>202304242012241_doctorTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -123,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304191408145_tokenUpdate.resx">
       <DependentUpon>202304191408145_tokenUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304242012241_doctorTime.resx">
+      <DependentUpon>202304242012241_doctorTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
