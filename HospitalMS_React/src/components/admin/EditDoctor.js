@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosConfig from "../axiosConfig";
+import { useNavigate } from "react-router-dom";
 //import TimeField from 'react-simple-timefield';
 //import TimePicker from 'react-time-picker';
 //import TimeRangePicker from '@wojtekmaj/react-timerange-picker'
@@ -12,6 +13,8 @@ const EditDoctor = () => {
     const { id } = useParams();
     const [result, setResult] = useState([]);
     const [isReady, setIsReady] = useState(false);
+    const [errs, setErrs] = useState([]);
+    const navigate = useNavigate();
 
     const [dcotorId, setId] = useState("");
     const [name, setName] = useState("");
@@ -36,7 +39,7 @@ const EditDoctor = () => {
         axiosConfig.get("/doctor/" + id).then((rsp) => {
             debugger
             // setResult(rsp.data);
-            // setId(rsp.data.Id);
+            setId(rsp.data.Id);
             setName(rsp.data.Name);
             setAboutDoctor(rsp.data.AboutDoctor);
             setDesignation(rsp.data.Designation);
@@ -54,26 +57,22 @@ const EditDoctor = () => {
             setIsReady(true);
         }, (err) => {
             debugger
+            setErrs(err.response.data);
         })
 
     }, []);
 
     const saveDoctorEdit = (event) => {
-        // event.preventDefault();
-        // // var image= new FormData();
-        // // image.append('cus_pic',mfile);
-        // var data = { name: name, email: email, mobile: mobile, address: address };
-        // axiosConfig.post("/doctor/update", data).
-        //     then((rsp) => {
-        //         setResult(rsp.data);
-        //         //setMsg(succ.data.msg);
-        //         //window.location.href="/list";
-        //         debugger;
-        //         setMsg("Profile updated");
-        //     }, (err) => {
-        //         //  debugger;
-        //         setErrs(err.response.data);
-        //     })
+         event.preventDefault();
+         var data = {Id:id, Name:name, AboutDoctor:aboutDoctor, Designation:designation, Gender:gender, Mobile:mobile, Email:email,Username:username, Room:room, StayFrom:stayFrom, StayTill:stayTill, JoinDate:joinDate, DeptId:deptId, Salary:salary, Fee:fee};
+        axiosConfig.post("/doctor/update", data).
+             then((rsp) => {
+                 debugger;
+                navigate({ pathname: '/admin/doctor/list' });
+            }, (err) => {
+                debugger;
+                setErrs(err.response.data);
+            })
     }
 
     if (!isReady) {
@@ -81,9 +80,10 @@ const EditDoctor = () => {
     }
 
     return (
-        <div className="noBootstrap">
+        <div>
             <br /><br />
             <p align="center"><b>Edit doctor details</b></p>
+            <span>{errs.Msg ? errs.Msg : ''}</span>
             <form onSubmit={saveDoctorEdit}>
                 {/* Name: <input defaultValue={name} onChange={(e) => { setName(e.target.value) }} type="text" /><span>{errs.name ? errs.name[0] : ''}</span><br /> */}
                 Name: <input defaultValue={name} onChange={(e) => { setName(e.target.value) }} type="text" /><br />
@@ -92,14 +92,14 @@ const EditDoctor = () => {
                 Gender: <input defaultValue={gender} onChange={(e) => { setGender(e.target.value) }} type="text" /><br />
                 Mobile: <input defaultValue={mobile} onChange={(e) => { setMobile(e.target.value) }} type="text" /><br />
                 Email: <input defaultValue={email} onChange={(e) => { setEmail(e.target.value) }} type="text" /><br />
-                Username: <input defaultValue={username} onChange={(e) => { setUsername(e.target.value) }} type="text" /><br />
+                Username: <input defaultValue={username} onChange={(e) => { setUsername(e.target.value) }} type="text" readOnly/><br />
                 Room: <input defaultValue={room} onChange={(e) => { setRoom(e.target.value) }} type="text" /><br />
                 {/* Stay from: <input defaultValue={stayFrom} onChange={(e) => { setStayFrom(e.target.value) }} type="text" /><br /> */}
-                Join date: <input defaultValue={joinDate} onChange={(e) => { setJoinDate(e.target.value) }} type="text" /><br />
+                Join date: <input defaultValue={new Date(joinDate).toLocaleDateString()} onChange={(e) => { setJoinDate(e.target.value) }} type="text" /><br />
                 Department id: <input defaultValue={deptId} onChange={(e) => { setDeptId(e.target.value) }} type="text" /><br />
                 Salary: <input defaultValue={salary} onChange={(e) => { setSalary(e.target.value) }} type="text" /><br />
                 Fee: <input defaultValue={fee} onChange={(e) => { setFee(e.target.value) }} type="text" /><br />
-
+              
                 Stay From: <input value={stayFrom} onClick={() => { setShowTime1(true) }} type="text" readOnly /><br />
                 {showTime1 &&
                     <Timekeeper time={stayFrom} onChange={(e) => { setStayFrom(e.formatted12) }}
@@ -112,8 +112,6 @@ const EditDoctor = () => {
                         onDoneClick={() => setShowTime2(false)}
                         switchToMinuteOnHourSelect />
                 }
-
-
                 <br /><input type="submit" value="Save info" />
             </form>
         </div>

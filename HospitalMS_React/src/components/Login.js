@@ -20,7 +20,8 @@ const Login = () => {
                 localStorage.setItem('_authToken', succ.data.Data.TKey);
                 localStorage.setItem('_HMSuserType', succ.data.userType);
                 if (succ.data.userType =="Admin") {
-                    navigate({ pathname: '/admin/dashboard' });
+                     navigate({ pathname: '/admin/dashboard' });
+                    // navigate({ pathname: '/admin/doctor/list' });
                 }
                 if (succ.data.userType =="Receptionist") {
                     navigate({ pathname: '/receptionist/dashboard' });
@@ -39,7 +40,7 @@ const Login = () => {
             Username: <input value={username} onChange={(e) => { setUsername(e.target.value) }} type="text" /><span>{errs.username ? errs.username[0] : ''}</span><br />
             Password: <input value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" /><span>{errs.password ? errs.password[0] : ''}</span><br />
             <input type="submit" value="Login" /><br/>
-            <p class="alert alert-danger">{errs.Msg ? errs.Msg : ''}</p>
+                <p>{errs.Msg ? errs.Msg : ''}</p>
         </form></div>
     )
 }

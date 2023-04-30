@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DTOs\DepartmentDTO.cs" />
     <Compile Include="DTOs\DeptDocStaffDTO.cs" />
+    <Compile Include="DTOs\DoctorDeptDTO.cs" />
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\StaffDTO.cs" />

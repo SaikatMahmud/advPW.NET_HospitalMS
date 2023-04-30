@@ -19,7 +19,7 @@ namespace BLL.DTOs
         public string Room { get; set; }
         public string StayFrom { get; set; }
         public string StayTill { get; set; }
-        public DateTime JoinDate { get; set; }
+        public string JoinDate { get; set; }
         public int DeptId { get; set; }
         public int Salary { get; set; }
         public int Fee { get; set; }

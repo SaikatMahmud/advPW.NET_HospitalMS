@@ -13,17 +13,18 @@ namespace BLL.Services
 {
     public class DoctorService
     {
-        public static List<DoctorDTO> Get()
+        public static List<DoctorDeptDTO> Get()
         {
             var data = DataAccessFactory.DoctorData().Get();
             if (data != null)
             {
                 var cfg = new MapperConfiguration(c =>
                 {
-                    c.CreateMap<Doctor, DoctorDTO>();
+                    c.CreateMap<Doctor, DoctorDeptDTO>();
+                    c.CreateMap<Department, DepartmentDTO>();
                 });
                 var mapper = new Mapper(cfg);
-                return mapper.Map<List<DoctorDTO>>(data);
+                return mapper.Map<List<DoctorDeptDTO>>(data);
             }
             return null;
         }
@@ -40,7 +41,7 @@ namespace BLL.Services
                 var mapped = mapper.Map<DoctorDTO>(data);
                 DateTime stayFrom = DateTime.ParseExact(mapped.StayFrom, "h:mm tt", CultureInfo.InvariantCulture);
                 DateTime stayTill = DateTime.ParseExact(mapped.StayTill, "h:mm tt", CultureInfo.InvariantCulture);
-                DateTime currentTime = DateTime.ParseExact(DateTime.Now.ToString("HH:mm tt"), "h:mm tt", CultureInfo.InvariantCulture);
+                DateTime currentTime = DateTime.ParseExact(DateTime.Now.ToString("hh:mm tt"), "h:mm tt", CultureInfo.InvariantCulture);
                 if (currentTime >= stayFrom && currentTime <= stayTill)
                 {
                     mapped.IsAvailable = true;

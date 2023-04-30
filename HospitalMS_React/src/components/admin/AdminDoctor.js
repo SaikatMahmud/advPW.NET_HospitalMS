@@ -22,11 +22,18 @@ const AdminDoctor = () => {
     }, []);
 
     const deleteDoctor = (id) => {
-        axiosConfig.get(`/doctor/delete/${id}`).then((rsp) => {
+        axiosConfig.post(`/doctor/delete/${id}`).then((rsp) => {
           debugger
-          setResult(rsp.data);
-          setDelete("Doctor deleted!");
+          axiosConfig.get("/doctor/all").then((rsp) => {
+            debugger
+            setResult(rsp.data);
         }, (err) => {
+            debugger
+        })
+        setDelete("Doctor deleted!");
+        setIsReady(true);
+        }, (err) => {
+            debugger
          // setErrs(err.response.data);
     
         })
@@ -40,7 +47,7 @@ const AdminDoctor = () => {
         <div>
             <br /><br />
             <p align="center"><b>Doctors list</b></p>
-            <span>Total:</span><span>               </span><span>Available:</span>
+            <span>Total:</span><span>               </span><span>Available:</span><br/>
             <span><b><i>{msgDelete ? msgDelete : ''}</i></b><br /></span>
             <table border="2" align="center" cellPadding="10" width="30%">
 
@@ -64,7 +71,7 @@ const AdminDoctor = () => {
                             <td>{doctor.Designation}</td>
                             <td>{doctor.Gender}</td>
                             <td>{doctor.Room}</td>
-                            <td>{doctor.DeptId}</td>
+                            <td>{doctor.Department.Name}</td>
                             <td>{doctor.Salary}</td>
                             <td>{doctor.Mobile}</td>
                             <td>{doctor.Email}</td>
@@ -92,7 +99,8 @@ const AdminDoctor = () => {
                     )
                 }
 
-            </table> & emsp;& emsp;& emsp;& emsp;
+            </table> 
+            {/* & emsp;& emsp;& emsp;& emsp; */}
             {/* <table border="2" align="center" cellPadding="10" width="30%">
                 <td>
                     <b>Details:</b>   {result.med.details} <br /><br />
