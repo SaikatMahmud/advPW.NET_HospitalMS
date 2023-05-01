@@ -24,7 +24,19 @@ namespace BLL.Services
                     c.CreateMap<Department, DepartmentDTO>();
                 });
                 var mapper = new Mapper(cfg);
-                return mapper.Map<List<DoctorDeptDTO>>(data);
+                var mapped =  mapper.Map<List<DoctorDeptDTO>>(data);
+                foreach (var doctor in mapped)
+                {
+                    DateTime stayFrom = DateTime.ParseExact(doctor.StayFrom, "h:mm tt", CultureInfo.InvariantCulture);
+                    DateTime stayTill = DateTime.ParseExact(doctor.StayTill, "h:mm tt", CultureInfo.InvariantCulture);
+                    DateTime currentTime = DateTime.ParseExact(DateTime.Now.ToString("hh:mm tt"), "h:mm tt", CultureInfo.InvariantCulture);
+                    if (currentTime >= stayFrom && currentTime <= stayTill)
+                    {
+                        doctor.IsAvailable = true;
+                    }
+                    else { doctor.IsAvailable = false; }
+                    return mapped;
+                }
             }
             return null;
         }

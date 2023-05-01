@@ -47,6 +47,14 @@ namespace BLL.Services
             return (DataAccessFactory.PatientData().Delete(id));
         }
 
+        public static int OPDCount(int PatientId)
+        {
+            int count = 0;
+            var OPDbills = DataAccessFactory.OPDBillData().Get();
+            count = OPDbills.Count(c =>  c.PatientId == PatientId);
+            return count;
+        }
+
 
         static List<PatientDTO> Convert(List<Patient> patients)
         {

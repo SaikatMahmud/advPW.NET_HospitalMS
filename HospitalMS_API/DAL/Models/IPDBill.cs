@@ -13,7 +13,8 @@ namespace DAL.Models
         public int Id { get; set; }
         public int PatientId { get; set; }
         public int IPDAdmitId { get; set; }
-        public int Amount { get; set; }
+        public int TotalAmount { get; set; }
+        public int PaidAmount { get; set; }
         public string Status { get; set; }
         [ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }

@@ -18,20 +18,36 @@ namespace BLL.Services
                                                                                     //then generate token and return the token to the user
 
             if (res == true)
-            {
-                var token = new Token();
-                token.CreatedBy = Username;
-                token.CreatedAt = DateTime.Now;
-                token.TKey = Guid.NewGuid().ToString();
-                var ret = DataAccessFactory.TokenData().Create(token);
-                if (ret != null)
+            {   var allTkn= DataAccessFactory.TokenData().Get();
+                var exTkn = (from t in allTkn
+                            where t.CreatedBy.Equals(Username) &&
+                            t.ExpiredAt == null
+                            select t).SingleOrDefault();
+                if (exTkn != null)
                 {
                     var cfg = new MapperConfiguration(c =>
                     {
                         c.CreateMap<Token, TokenDTO>();
                     });
                     var mapper = new Mapper(cfg);
-                    return mapper.Map<TokenDTO>(ret);
+                    return mapper.Map<TokenDTO>(exTkn);
+                }
+                else
+                {
+                    var token = new Token();
+                    token.CreatedBy = Username;
+                    token.CreatedAt = DateTime.Now;
+                    token.TKey = Guid.NewGuid().ToString();
+                    var ret = DataAccessFactory.TokenData().Create(token);
+                    if (ret != null)
+                    {
+                        var cfg = new MapperConfiguration(c =>
+                        {
+                            c.CreateMap<Token, TokenDTO>();
+                        });
+                        var mapper = new Mapper(cfg);
+                        return mapper.Map<TokenDTO>(ret);
+                    }
                 }
             }
             return null;

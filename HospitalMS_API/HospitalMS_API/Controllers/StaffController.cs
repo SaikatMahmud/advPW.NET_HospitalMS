@@ -60,6 +60,7 @@ namespace HospitalMS_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message, Data = staff });
             }
         }
+        
         [HttpPost]
         [Route("api/staff/update")]
         public HttpResponseMessage Update(StaffDTO staff)
@@ -82,7 +83,7 @@ namespace HospitalMS_API.Controllers
             }
         }
         [HttpPost]
-        [Route("api/staff/delete")]
+        [Route("api/staff/delete/{id}")]
         public HttpResponseMessage Delete(int id)
         {
             try

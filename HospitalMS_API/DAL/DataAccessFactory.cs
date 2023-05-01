@@ -22,6 +22,9 @@ namespace DAL
         public static IRepo<Staff, int, Staff> StaffData()
         {
             return new StaffRepo();
+        } public static IRepo<OPDBill, int, OPDBill> OPDBillData()
+        {
+            return new OPDBillRepo();
         } 
         public static IRepo<Department, int, Department> DepartmentData()
         {

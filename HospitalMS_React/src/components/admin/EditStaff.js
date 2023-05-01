@@ -9,51 +9,51 @@ import Timekeeper from 'react-timekeeper';
 //import "../NoBootstrap.css";
 
 
-const EditDoctor = () => {
+const EditStaff = () => {
     const { id } = useParams();
     const [result, setResult] = useState([]);
     const [isReady, setIsReady] = useState(false);
     const [errs, setErrs] = useState([]);
     const navigate = useNavigate();
 
-    const [doctorId, setId] = useState("");
+    const [staffId, setId] = useState("");
     const [name, setName] = useState("");
-    const [aboutDoctor, setAboutDoctor] = useState("");
+    // const [aboutDoctor, setAboutDoctor] = useState("");
     const [designation, setDesignation] = useState("");
     const [gender, setGender] = useState("");
     const [mobile, setMobile] = useState("");
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
-    const [room, setRoom] = useState("");
-    const [stayFrom, setStayFrom] = useState("");
-    const [stayTill, setStayTill] = useState("");
+    // const [room, setRoom] = useState("");
+    // const [stayFrom, setStayFrom] = useState("");
+    // const [stayTill, setStayTill] = useState("");
     const [joinDate, setJoinDate] = useState("");
     const [deptId, setDeptId] = useState("");
     const [salary, setSalary] = useState("");
-    const [fee, setFee] = useState("");
+    // const [fee, setFee] = useState("");
     //const [time, setTime] = useState('12:34PM');
-    const [showTime1, setShowTime1] = useState(false);
-    const [showTime2, setShowTime2] = useState(false);
+    // const [showTime1, setShowTime1] = useState(false);
+    // const [showTime2, setShowTime2] = useState(false);
 
     useEffect(() => {
-        axiosConfig.get("/doctor/" + id).then((rsp) => {
+        axiosConfig.get("/staff/" + id).then((rsp) => {
             debugger
             // setResult(rsp.data);
             setId(rsp.data.Id);
             setName(rsp.data.Name);
-            setAboutDoctor(rsp.data.AboutDoctor);
+            // setAboutDoctor(rsp.data.AboutDoctor);
             setDesignation(rsp.data.Designation);
             setGender(rsp.data.Gender);
             setMobile(rsp.data.Mobile);
             setEmail(rsp.data.Email);
             setUsername(rsp.data.Username);
-            setRoom(rsp.data.Room);
-            setStayFrom(rsp.data.StayFrom);
-            setStayTill(rsp.data.StayTill);
+            // setRoom(rsp.data.Room);
+            // setStayFrom(rsp.data.StayFrom);
+            // setStayTill(rsp.data.StayTill);
             setJoinDate(rsp.data.JoinDate);
             setDeptId(rsp.data.DeptId);
             setSalary(rsp.data.Salary);
-            setFee(rsp.data.Fee);
+            // setFee(rsp.data.Fee);
             setIsReady(true);
         }, (err) => {
             debugger
@@ -62,13 +62,14 @@ const EditDoctor = () => {
 
     }, []);
 
-    const saveDoctorEdit = (event) => {
+    const saveStaffEdit = (event) => {
          event.preventDefault();
-         var data = {Id:doctorId, Name:name, AboutDoctor:aboutDoctor, Designation:designation, Gender:gender, Mobile:mobile, Email:email,Username:username, Room:room, StayFrom:stayFrom, StayTill:stayTill, JoinDate:joinDate, DeptId:deptId, Salary:salary, Fee:fee};
-        axiosConfig.post("/doctor/update", data).
+         var data = {Id:staffId, Name:name, Designation:designation, Gender:gender, Mobile:mobile, Email:email,Username:username,
+            JoinDate:joinDate, DeptId:deptId, Salary:salary};
+        axiosConfig.post("/staff/update", data).
              then((rsp) => {
                  debugger;
-                navigate({ pathname: '/admin/doctor/list' });
+                navigate({ pathname: '/admin/staff/list' });
             }, (err) => {
                 debugger;
                 setErrs(err.response.data);
@@ -82,40 +83,27 @@ const EditDoctor = () => {
     return (
         <div>
             <br /><br />
-            <p align="center"><b>Edit doctor details</b></p>
+            <p align="center"><b>Edit staff details</b></p>
             <span>{errs.Msg ? errs.Msg : ''}</span>
-            <form onSubmit={saveDoctorEdit}>
+            <form onSubmit={saveStaffEdit}>
                 {/* Name: <input defaultValue={name} onChange={(e) => { setName(e.target.value) }} type="text" /><span>{errs.name ? errs.name[0] : ''}</span><br /> */}
                 Name: <input defaultValue={name} onChange={(e) => { setName(e.target.value) }} type="text" /><br />
-                About doctor: <input defaultValue={aboutDoctor} onChange={(e) => { setAboutDoctor(e.target.value) }} type="text" /><br />
+                {/* About doctor: <input defaultValue={aboutDoctor} onChange={(e) => { setAboutDoctor(e.target.value) }} type="text" /><br /> */}
                 Designation: <input defaultValue={designation} onChange={(e) => { setDesignation(e.target.value) }} type="text" /><br />
                 Gender: <input defaultValue={gender} onChange={(e) => { setGender(e.target.value) }} type="text" /><br />
                 Mobile: <input defaultValue={mobile} onChange={(e) => { setMobile(e.target.value) }} type="text" /><br />
                 Email: <input defaultValue={email} onChange={(e) => { setEmail(e.target.value) }} type="text" /><br />
                 Username: <input defaultValue={username} onChange={(e) => { setUsername(e.target.value) }} type="text" readOnly/><br />
-                Room: <input defaultValue={room} onChange={(e) => { setRoom(e.target.value) }} type="text" /><br />
+                {/* Room: <input defaultValue={room} onChange={(e) => { setRoom(e.target.value) }} type="text" /><br /> */}
                 {/* Stay from: <input defaultValue={stayFrom} onChange={(e) => { setStayFrom(e.target.value) }} type="text" /><br /> */}
                 Join date: <input defaultValue={new Date(joinDate).toLocaleDateString()} onChange={(e) => { setJoinDate(e.target.value) }} type="text" /><br />
                 Department id: <input defaultValue={deptId} onChange={(e) => { setDeptId(e.target.value) }} type="text" /><br />
                 Salary: <input defaultValue={salary} onChange={(e) => { setSalary(e.target.value) }} type="text" /><br />
-                Fee: <input defaultValue={fee} onChange={(e) => { setFee(e.target.value) }} type="text" /><br />
-              
-                Stay From: <input value={stayFrom} onClick={() => { setShowTime1(true) }} type="text" readOnly /><br />
-                {showTime1 &&
-                    <Timekeeper time={stayFrom} onChange={(e) => { setStayFrom(e.formatted12) }}
-                        onDoneClick={() => setShowTime1(false)}
-                        switchToMinuteOnHourSelect />
-                }
-                Stay till:<input value={stayTill} onClick={() => { setShowTime2(true) }} type="text" readOnly /><br />
-                {showTime2 &&
-                    <Timekeeper time={stayTill} onChange={(e) => { setStayTill(e.formatted12) }}
-                        onDoneClick={() => setShowTime2(false)}
-                        switchToMinuteOnHourSelect />
-                }
+                {/* Fee: <input defaultValue={fee} onChange={(e) => { setFee(e.target.value) }} type="text" /><br /> */}
                 <br /><input type="submit" value="Save info" />
             </form>
         </div>
     )
 }
 
-export default EditDoctor;
+export default EditStaff;

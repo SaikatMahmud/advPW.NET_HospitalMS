@@ -82,7 +82,7 @@ namespace HospitalMS_API.Controllers
             }
         }
         [HttpPost]
-        [Route("api/dept/delete")]
+        [Route("api/dept/delete/{id}")]
         public HttpResponseMessage Delete(int id)
         {
             try

@@ -25,7 +25,7 @@ namespace DAL.Repos
 
         public List<Token> Get()
         {
-            throw new NotImplementedException();
+           return db.Tokens.ToList();
         }
 
         public Token Get(string id)

@@ -9,11 +9,15 @@ const AdminDoctor = () => {
     const [result, setResult] = useState([]);
     const [isReady, setIsReady] = useState(false);
     const [msgDelete, setDelete] = useState("");
+    const [totalDoctors, setTotalDoctors] = useState(0);
+    const [availableDoctors, setAvailableDoctors] = useState(0);
 
     useEffect(() => {
         axiosConfig.get("/doctor/all").then((rsp) => {
             debugger
             setResult(rsp.data);
+            setTotalDoctors(rsp.data.length);
+            setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
             setIsReady(true);
         }, (err) => {
             debugger
@@ -25,8 +29,11 @@ const AdminDoctor = () => {
         axiosConfig.post(`/doctor/delete/${id}`).then((rsp) => {
           debugger
           axiosConfig.get("/doctor/all").then((rsp) => {
-            debugger
+            //debugger
             setResult(rsp.data);
+            setTotalDoctors(rsp.data.length);
+            setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
+            debugger
         }, (err) => {
             debugger
         })
@@ -47,7 +54,7 @@ const AdminDoctor = () => {
         <div>
             <br /><br />
             <p align="center"><b>Doctors list</b></p>
-            <span>Total:</span><span>               </span><span>Available:</span><br/>
+            <span><b>Total: {totalDoctors}</b></span><br/><span></span><span><b>Available:{availableDoctors}</b></span><br/>
             <span><b><i>{msgDelete ? msgDelete : ''}</i></b><br /></span>
             <table border="2" align="center" cellPadding="10" width="30%">
 
