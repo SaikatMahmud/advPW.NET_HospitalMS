@@ -51,10 +51,11 @@ const AdminDoctor = () => {
     }
 
     return (
-        <div>
+        <div align='center'>
             <br /><br />
             <p align="center"><b>Doctors list</b></p>
             <span><b>Total: {totalDoctors}</b></span><br/><span></span><span><b>Available:{availableDoctors}</b></span><br/>
+            <br/><button class='btn btn-success'><Link class='text text-light' to={`/admin/doctor/add`}> Add New</Link></button>
             <span><b><i>{msgDelete ? msgDelete : ''}</i></b><br /></span>
             <table border="2" align="center" cellPadding="10" width="30%">
 

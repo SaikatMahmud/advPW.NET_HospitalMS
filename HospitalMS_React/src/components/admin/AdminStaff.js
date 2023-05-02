@@ -50,12 +50,13 @@ const AdminStaff = () => {
     }
 
     return (
-        <div>
+        <div align='center'>
             <br /><br />
             <p align="center"><b>Staff list</b></p>
             <span><b>Total: {totalStaff}</b></span><br/><span></span>
             {/* <span><b>Available:{availableDoctors}</b></span> */}
             <br/>
+            <button class='btn btn-success'><Link class='text text-light' to={`/admin/staff/add`}> Add New</Link></button>
             <span><b><i>{msgDelete ? msgDelete : ''}</i></b><br /></span>
             <table border="2" align="center" cellPadding="10" width="30%">
 
