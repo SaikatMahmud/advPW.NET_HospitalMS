@@ -10,7 +10,9 @@ namespace DAL.Models
 {
     public class IPDAdmit
     {
-        [Key, ForeignKey("IPDBill")]
+        [Key]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[ForeignKey("IPDBill")]
         public int Id { get; set; }
         public int PatientId { get; set; }
         public int NightCount { get; set; }
@@ -18,13 +20,18 @@ namespace DAL.Models
         public int? WardId { get; set; }
         [StringLength(15)]
         public string Status { get; set; }
+        public DateTime AdmitDate { get; set; }
         [ForeignKey("WardId")]
         public virtual Ward Ward { get; set; }
         [ForeignKey("CabinId")]
         public virtual Cabin Cabin { get; set; }
         [ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }
-        public virtual IPDBill IPDBill { get; set; }
+        public virtual ICollection<IPDBill> IPDBills { get; set; }
+        public IPDAdmit()
+        {
+            IPDBills = new List<IPDBill>();
+        }
 
     }
 }

@@ -10,15 +10,19 @@ namespace DAL.Models
 {
     public class IPDBill
     {
+       // [Key]
         public int Id { get; set; }
         public int PatientId { get; set; }
+        [ForeignKey("IPDAdmit")]
         public int IPDAdmitId { get; set; }
         public int TotalAmount { get; set; }
         public int PaidAmount { get; set; }
         public string Status { get; set; }
+        public DateTime PaymentDate { get; set; }
         [ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }
-        [Required]
+       // [Required]
+        
         public virtual IPDAdmit IPDAdmit { get; set; }
     }
 }

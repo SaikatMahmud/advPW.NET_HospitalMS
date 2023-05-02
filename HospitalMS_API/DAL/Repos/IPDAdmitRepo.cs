@@ -8,31 +8,38 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class IPDAdmitRepo : Repo, IRepo<IPDAdmit, int, IPDAdmit>
+    internal class IPDAdmitRepo   :Repo, IRepo<IPDAdmit, int, IPDAdmit>
     {
         public IPDAdmit Create(IPDAdmit obj)
         {
-            throw new NotImplementedException();
+            db.IPDAdmits.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exIPD = Get(id);
+            db.IPDAdmits.Remove(exIPD);
+            return db.SaveChanges() > 0;
         }
 
         public List<IPDAdmit> Get()
         {
-            throw new NotImplementedException();
+            return db.IPDAdmits.ToList();
         }
 
         public IPDAdmit Get(int id)
         {
-            throw new NotImplementedException();
+            return db.IPDAdmits.Find(id);
         }
 
         public IPDAdmit Update(IPDAdmit obj)
         {
-            throw new NotImplementedException();
+            var exIPD = Get(obj.Id);
+            db.Entry(exIPD).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public IPDBill Create(IPDBill obj)
         {
-            throw new NotImplementedException();
+            db.IPDBills.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exIPD = Get(id);
+            db.IPDBills.Remove(exIPD);
+            return db.SaveChanges() > 0;
         }
 
         public List<IPDBill> Get()
         {
-            throw new NotImplementedException();
+            return db.IPDBills.ToList();
         }
 
         public IPDBill Get(int id)
         {
-            throw new NotImplementedException();
+            return db.IPDBills.Find(id);
         }
 
         public IPDBill Update(IPDBill obj)
         {
-            throw new NotImplementedException();
+            var exIPD = Get(obj.Id);
+            db.Entry(exIPD).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

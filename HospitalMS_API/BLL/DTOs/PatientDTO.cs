@@ -18,13 +18,15 @@ namespace BLL.DTOs
         public string Email { get; set; }
         public string Address { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
-        public string Type { get; set; }
-        public List<Prescription> Prescriptions { get; set; }
-        public List<Appointment> Appointments { get; set; }
-        public List<IPDAdmit> IPDAdmits { get; set; }
-        public List<PerformDiag> PerformDiags { get; set; }
-        public List<OPDBill> OPDBills { get; set; }
-        public List<Complaint> Complaints { get; set; }
+        public int Age { get; set; }
+        public int OPDCount { get; set; }
+        public int IPDCount { get; set; }
+        public int TotalPaid { get; set; }
+        //public List<Prescription> Prescriptions { get; set; }
+        //public List<Appointment> Appointments { get; set; }
+        //public List<IPDAdmit> IPDAdmits { get; set; }
+        //public List<PerformDiag> PerformDiags { get; set; }
+        //public List<OPDBill> OPDBills { get; set; }
+        //public List<Complaint> Complaints { get; set; }
     }
 }

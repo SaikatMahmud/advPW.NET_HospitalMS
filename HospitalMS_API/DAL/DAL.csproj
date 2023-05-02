@@ -55,21 +55,57 @@
     <Compile Include="HMSDb.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Migrations\202303251642153_tier_db_create.cs" />
-    <Compile Include="Migrations\202303251642153_tier_db_create.designer.cs">
-      <DependentUpon>202303251642153_tier_db_create.cs</DependentUpon>
+    <Compile Include="Migrations\202305012140398_Initial.cs" />
+    <Compile Include="Migrations\202305012140398_Initial.designer.cs">
+      <DependentUpon>202305012140398_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304181621132_UserTokenDB.cs" />
-    <Compile Include="Migrations\202304181621132_UserTokenDB.designer.cs">
-      <DependentUpon>202304181621132_UserTokenDB.cs</DependentUpon>
+    <Compile Include="Migrations\202305012144362_fix1.cs" />
+    <Compile Include="Migrations\202305012144362_fix1.designer.cs">
+      <DependentUpon>202305012144362_fix1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304191408145_tokenUpdate.cs" />
-    <Compile Include="Migrations\202304191408145_tokenUpdate.designer.cs">
-      <DependentUpon>202304191408145_tokenUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\202305012146275_fix2.cs" />
+    <Compile Include="Migrations\202305012146275_fix2.designer.cs">
+      <DependentUpon>202305012146275_fix2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304242012241_doctorTime.cs" />
-    <Compile Include="Migrations\202304242012241_doctorTime.designer.cs">
-      <DependentUpon>202304242012241_doctorTime.cs</DependentUpon>
+    <Compile Include="Migrations\202305012149221_fix3.cs" />
+    <Compile Include="Migrations\202305012149221_fix3.designer.cs">
+      <DependentUpon>202305012149221_fix3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012150470_fix4.cs" />
+    <Compile Include="Migrations\202305012150470_fix4.designer.cs">
+      <DependentUpon>202305012150470_fix4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012158517_fix5.cs" />
+    <Compile Include="Migrations\202305012158517_fix5.designer.cs">
+      <DependentUpon>202305012158517_fix5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012205220_fix6.cs" />
+    <Compile Include="Migrations\202305012205220_fix6.designer.cs">
+      <DependentUpon>202305012205220_fix6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012209495_fix7.cs" />
+    <Compile Include="Migrations\202305012209495_fix7.designer.cs">
+      <DependentUpon>202305012209495_fix7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012212465_fix8.cs" />
+    <Compile Include="Migrations\202305012212465_fix8.designer.cs">
+      <DependentUpon>202305012212465_fix8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012215149_fix9.cs" />
+    <Compile Include="Migrations\202305012215149_fix9.designer.cs">
+      <DependentUpon>202305012215149_fix9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305021535593_ipdFix.cs" />
+    <Compile Include="Migrations\202305021535593_ipdFix.designer.cs">
+      <DependentUpon>202305021535593_ipdFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305021539381_ipdFix2.cs" />
+    <Compile Include="Migrations\202305021539381_ipdFix2.designer.cs">
+      <DependentUpon>202305021539381_ipdFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305021632240_ipdFix3.cs" />
+    <Compile Include="Migrations\202305021632240_ipdFix3.designer.cs">
+      <DependentUpon>202305021632240_ipdFix3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -119,20 +155,46 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303251642153_tier_db_create.resx">
-      <DependentUpon>202303251642153_tier_db_create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305012140398_Initial.resx">
+      <DependentUpon>202305012140398_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304181621132_UserTokenDB.resx">
-      <DependentUpon>202304181621132_UserTokenDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305012144362_fix1.resx">
+      <DependentUpon>202305012144362_fix1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304191408145_tokenUpdate.resx">
-      <DependentUpon>202304191408145_tokenUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305012146275_fix2.resx">
+      <DependentUpon>202305012146275_fix2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304242012241_doctorTime.resx">
-      <DependentUpon>202304242012241_doctorTime.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305012149221_fix3.resx">
+      <DependentUpon>202305012149221_fix3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012150470_fix4.resx">
+      <DependentUpon>202305012150470_fix4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012158517_fix5.resx">
+      <DependentUpon>202305012158517_fix5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012205220_fix6.resx">
+      <DependentUpon>202305012205220_fix6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012209495_fix7.resx">
+      <DependentUpon>202305012209495_fix7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012212465_fix8.resx">
+      <DependentUpon>202305012212465_fix8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012215149_fix9.resx">
+      <DependentUpon>202305012215149_fix9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305021535593_ipdFix.resx">
+      <DependentUpon>202305021535593_ipdFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305021539381_ipdFix2.resx">
+      <DependentUpon>202305021539381_ipdFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305021632240_ipdFix3.resx">
+      <DependentUpon>202305021632240_ipdFix3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

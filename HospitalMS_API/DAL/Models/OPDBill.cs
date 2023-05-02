@@ -11,9 +11,9 @@ namespace DAL.Models
     public class OPDBill
     {
         public int Id { get; set; }
-        public float BillAmount { get; set; }
+        public int BillAmount { get; set; }
         [Required]
-        public float PaidAmount { get; set; }
+        public int PaidAmount { get; set; }
         // public int Discount { get; set; }
         public int PatientId { get; set; }
         public DateTime BillDate { get; set; }
