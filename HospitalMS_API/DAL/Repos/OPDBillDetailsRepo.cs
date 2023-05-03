@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public OPDBillDetails Create(OPDBillDetails obj)
         {
-            throw new NotImplementedException();
+            db.OPDBillDetails.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exOPD = Get(id);
+            db.OPDBillDetails.Remove(exOPD);
+            return db.SaveChanges() > 0;
         }
 
         public List<OPDBillDetails> Get()
         {
-            throw new NotImplementedException();
+            return db.OPDBillDetails.ToList();
         }
 
         public OPDBillDetails Get(int id)
         {
-            throw new NotImplementedException();
+            return db.OPDBillDetails.Find(id);
         }
 
         public OPDBillDetails Update(OPDBillDetails obj)
         {
-            throw new NotImplementedException();
+            var exOPD = Get(obj.Id);
+            db.Entry(exOPD).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

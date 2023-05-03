@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace HospitalMS_API.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class StatController : ApiController
     {
         [HttpGet]
@@ -16,7 +18,11 @@ namespace HospitalMS_API.Controllers
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, StatService.GetMonthlyOPDStat());
+                return Request.CreateResponse(HttpStatusCode.OK,new {
+                    OPDPtCount = StatService.GetMonthlyOPDStat(),
+                    IPDPtCount= StatService.GetMonthlyIPDStat(),
+                    OPDVisitDCount= StatService.OPDVisitDCount(),
+                } );
             }
             catch (Exception ex)
             {

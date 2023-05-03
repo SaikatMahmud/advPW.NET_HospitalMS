@@ -1,49 +1,123 @@
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosConfig from "../axiosConfig";
+import { Link, useNavigate } from "react-router-dom";
+import { Chart } from "react-google-charts";
 
 const AdminStat = () => {
-    const { id } = useParams();
-    const [result, setResult] = useState([]);
-    const [isReady, setIsReady] = useState(false);
+  const [result, setResult] = useState([]);
+  const [total, setTotal] = useState();
+  const [isReady, setIsReady] = useState(false);
+  const [cusAdd, setAddress] = useState("");
+  const [method, setMethod] = useState("");
+  const [errs, setErrs] = useState({});
+  const [msgRemove, setRemove] = useState("");
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        axiosConfig.get("/details/med/id=" + id).then((rsp) => {
-            debugger
-            setResult(rsp.data);
-            setIsReady(true);
-        }, (err) => {
-            debugger
-        })
+//   const [currentYear, setCurrentYear] = useState([["Month", "TK"]]);
+//   const [previousYear, setPreviousYear] = useState([["Month", "TK"]]);
+  const [OPDPtCount, setOPDPtCount] = useState([["Month", "Patient"]]);
+  const [IPDPtCount, setIPDPtCount] = useState([["Month", "Patient"]]);
+  const [OPDDoctorVisit, setOPDDoctorVisit] = useState([["Name", "Visit count"]]);
+  
 
-    }, []);
+  useEffect(() => {
+    axiosConfig.get("/admin/stat").then((rsp) => {
+      // setThisMonth(oldArray => [...oldArray,["Month", "TK"]]);
+      setResult(rsp.data);
+      rsp.data.OPDPtCount?.map((count,index)=>
+      setOPDPtCount((oldArray) => [...oldArray,[count.Month,count.OPDPtCount]])
+      )
+      rsp.data.IPDPtCount?.map((count,index)=>
+      setIPDPtCount((oldArray) => [...oldArray,[count.Month,count.IPDPtCount]])
+      )
+      rsp.data.OPDVisitDCount?.map((count,index)=>
+      setOPDDoctorVisit((oldArray) => [...oldArray,[count.DoctorName,count.OPDVisitDCount]])
+      )
 
-    if (!isReady) {
-        return <h2 align="center">Page loading....</h2>
-    }
+    //   rsp.data.dataPreviousYear?.map((order,index)=>
+    //   setPreviousYear((oldArray) => [...oldArray,[order.month,order.amount]])
+    //   ) 
 
-    return (
-        <div>
-            <br /><br />
-            <p align="center"><b>Medicine details:</b></p>
-            <table border="2" align="center" cellPadding="10" width="30%">
-                <td>
-                    Name: {result.med.medicine_name}<br />
-                    Genre: {result.med.genre}<br />
-                    Brand: {result.supplier_name}<br />
-                    Price: {result.med.price}
-                </td>
+      setIsReady(true);
+    }, (err) => {
+      //setErrs(err.response.data);
+      
+    })
+    
+  }, []);
 
-            </table>&emsp;&emsp;&emsp;&emsp;
-            <table border="2" align="center" cellPadding="10" width="30%">
-                <td>
-                    <b>Details:</b>   {result.med.details} <br /><br />
-                    <b>Side effects:</b>   none
-                </td>
+  
+  if (!isReady) {
+    return <h2 align="center">Page loading....</h2>
+  }
+  return (
+    <div>
+     {/* <div align='center'>
+      Number of order placed from your account: <b>{result.count}</b><br/>
+      Your total expense for all order: <b>{result.totalAmount}</b> TK<br/>
+      </div> <br/>
+      <div align='center'>
+      Order placed in this month: <b>{result.countInThisM}</b><br/>
+      Expense in this month: <b>{result.amountInThisM}</b> TK<br/>
+      </div> <br/>
+      <div align='center'>
+      Order placed in previous month: <b>{result.countInPreviousM}</b><br/>
+      Expense in previous month: <b>{result.amountInPreviousM}</b> TK<br/>
+      </div> */}
+  
 
-            </table>
-        </div>
-    )
+      {/* {
+        result.map((order, index) =>
+        // setThisMonth.bind(oldArray => [...oldArray,[order.month,order.amount]])
+        setThisMonth.push([order.month,order.amount])
+        )
+      } */}
+      {
+ 
+      }
+{/* 
+      {console.log(currentYear)}
+
+      <h4>Order statistics for current year:
+      <Chart
+        chartType="ColumnChart"
+        data={currentYear}
+        width="950px"
+        height="300px"
+        legendToggle
+        sliceVisibilityThreshold='0'
+      /></h4> */}
+      <h4>Last 6 months OPD patient:
+      <Chart
+        chartType="ColumnChart"
+        data={OPDPtCount}
+        width="950px"
+        height="300px"
+        legendToggle
+        sliceVisibilityThreshold='0'
+       /></h4>
+
+       <h4>Last 6 months IPD patient:
+      <Chart
+        chartType="ColumnChart"
+        data={IPDPtCount}
+        width="950px"
+        height="300px"
+        legendToggle
+        sliceVisibilityThreshold='0'
+       
+      /></h4>
+       <h4>Top 7 doctors with highest OPD patient:
+      <Chart
+        chartType="BarChart"
+        data={OPDDoctorVisit}
+        width="600px"
+        height="300px"
+        legendToggle
+        sliceVisibilityThreshold='0'
+      /></h4>
+    </div>
+  )
 }
 
-export default AdminStat;
+export default AdminStat

@@ -27,6 +27,10 @@ namespace DAL
         {
             return new OPDBillRepo();
         }
+        public static IRepo<OPDBillDetails, int, OPDBillDetails> OPDBillDetailsData()
+        {
+            return new OPDBillDetailsRepo();
+        }
         public static IRepo<IPDAdmit, int, IPDAdmit> IPDAdminData()
         {
             return new IPDAdmitRepo();

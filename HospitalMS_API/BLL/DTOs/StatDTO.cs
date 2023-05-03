@@ -9,6 +9,10 @@ namespace BLL.DTOs
     public class StatDTO
     {
         public string Month { get; set; }
-        public int PatientCount { get; set; }
+        public int? OPDPtCount { get; set; }
+        public int? IPDPtCount { get; set; }
+        public String DoctorName { get; set; }
+        public int OPDVisitDCount { get; set; }
+
     }
 }
