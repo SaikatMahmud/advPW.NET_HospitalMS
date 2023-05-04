@@ -64,7 +64,24 @@
             //        BillDate = DateTime.Now.AddMonths(-random.Next(1,7)),
 
             //    });
-            //} 
+            //}      
+
+
+
+
+            //for (int i = 1; i <= 100; i++)
+            //{
+            //    context.OPDBills.AddOrUpdate(new OPDBill
+            //    {
+            //        BillAmount = random.Next(2000, 5000),
+            //        PaidAmount = random.Next(500, 2500),
+            //        PatientId = random.Next(109, 159),
+            //        BillDate = DateTime.Now.AddDays(random.Next(1, 25)),
+
+            //    });
+            //}
+
+
 
             //for (int i = 1; i <= 22; i++)
             //{
@@ -139,6 +156,21 @@
 
             //for (int i = 1; i <= 80; i++)
             //{
+            //    context.IPDBills.AddOrUpdate(new IPDBill
+            //    {
+            //        PatientId = random.Next(109, 159),
+            //        TotalAmount = random.Next(10000, 15000),
+            //        PaidAmount = random.Next(4000, 10000),
+            //        Status = i % 3 == 0 ? "Due" : "Paid",
+            //        IPDAdmitId = random.Next(110, 210),
+            //        PaymentDate = DateTime.Now.AddDays(random.Next(1, 25)),
+            //    });
+            //}
+
+
+
+            //for (int i = 1; i <= 80; i++)
+            //{
             //    context.OPDBillDetails.AddOrUpdate(new OPDBillDetails
             //    {
 
@@ -148,7 +180,15 @@
             //        Discount = 0
             //    }) ;
             //}
-
+            //for (int i = 101; i < 180; i++)
+            //{
+            //    var existingData = DataAccessFactory.OPDBillData().Get(i);
+            //    if (existingData != null)
+            //    {
+            //        existingData.Status = i % 3 == 0 ? "Due" : "Paid";
+            //    }
+            //        context.OPDBills.AddOrUpdate(existingData);
+            //}
 
 
         }

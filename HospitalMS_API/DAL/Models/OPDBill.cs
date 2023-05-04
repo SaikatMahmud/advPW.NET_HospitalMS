@@ -16,6 +16,7 @@ namespace DAL.Models
         public int PaidAmount { get; set; }
         // public int Discount { get; set; }
         public int PatientId { get; set; }
+        public string Status { get; set; }
         public DateTime BillDate { get; set; }
         [ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }

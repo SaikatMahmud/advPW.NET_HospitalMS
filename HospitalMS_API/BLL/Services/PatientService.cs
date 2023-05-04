@@ -57,7 +57,7 @@ namespace BLL.Services
         public static int IPDCount(int PatientId)
         {
             int count = 0;
-            var IPDadmits = DataAccessFactory.IPDAdminData().Get();
+            var IPDadmits = DataAccessFactory.IPDAdmitData().Get();
             count = IPDadmits.Count(c => c.PatientId == PatientId);
             return count;
         }

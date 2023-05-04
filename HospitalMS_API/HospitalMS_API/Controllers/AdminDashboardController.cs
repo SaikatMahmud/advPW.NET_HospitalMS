@@ -10,20 +10,15 @@ using System.Web.Http.Cors;
 namespace HospitalMS_API.Controllers
 {
     [EnableCors("*", "*", "*")]
-    public class StatController : ApiController
+    public class AdminDashboardController : ApiController
     {
         [HttpGet]
-        [Route("api/admin/stat")]
-        public HttpResponseMessage GetOPDStat()
+        [Route("api/admin/dashboard")]
+        public HttpResponseMessage GetAdminDash()
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK,new {
-                    OPDPtCount = StatService.GetMonthlyOPDStat(),
-                    IPDPtCount= StatService.GetMonthlyIPDStat(),
-                    OPDVisitDCount= StatService.OPDVisitDCount(),
-                    OPDvsIPDCrntMn = StatService.OPDvsIPDrv(),
-                } );
+                return Request.CreateResponse(HttpStatusCode.OK, AdminDashboardService.DashboardInfo()); 
             }
             catch (Exception ex)
             {

@@ -40,7 +40,7 @@ namespace BLL.Services
 
         public static List<StatDTO> GetMonthlyIPDStat()
         {
-            var data = DataAccessFactory.IPDAdminData().Get();
+            var data = DataAccessFactory.IPDAdmitData().Get();
             DateTime currentDate = DateTime.Today;
             DateTime sixMonthsAgo = currentDate.AddMonths(-7);
 
@@ -68,18 +68,34 @@ namespace BLL.Services
                         .OrderByDescending(x => x.Count)
                         .Take(7)
                         .ToList();
-
-            //var fetched = data
-            //    .Where(x => x.AdmitDate >= sixMonthsAgo && x.AdmitDate <= currentDate)
-            //    .GroupBy(x => new { Month = x.AdmitDate.Month })
-            //    .Select(g => new { Month = g.Key.Month, PatientCount = (g.Select(x => x.PatientId).Count()) })
-            //    .OrderByDescending(x => x.Month)
-            //    .ToList();
             var result = fetched.Select(x => new StatDTO
             {
                 DoctorName = x.DoctorName,
                 OPDVisitDCount = x.Count
             }).ToList();
+            return result;
+        }
+
+        public static StatDTO OPDvsIPDrv() //current month OPD IPD Revenue
+        {
+            var OPD = DataAccessFactory.OPDBillData().Get();
+            var IPD = DataAccessFactory.IPDBillData().Get();
+            DateTime currentDate = DateTime.Now;
+            DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            var OPDrv = OPD
+                        .Where(x => x.BillDate >= firstDayOfMonth && x.BillDate <= lastDayOfMonth)
+                        .Select(x => x.BillAmount)
+                        .Sum();
+            var IPDrv = IPD
+                        .Where(x => x.PaymentDate >= firstDayOfMonth && x.PaymentDate <= lastDayOfMonth)
+                        .Select(x => x.TotalAmount)
+                        .Sum();
+            var result = new StatDTO
+            {
+                CurrentMnOPDrv = OPDrv,
+                CurrentMnIPDrv = IPDrv
+            };
             return result;
         }
     }

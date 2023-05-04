@@ -77,7 +77,7 @@ const AdminDept = () => {
     }
 
     return (
-        <div>
+        <div align='center'>
             <br /><br />
             <p align="center"><b>Department list</b></p>
             <span><b>Total: {totalDepts}</b></span><br/><span></span><br/>

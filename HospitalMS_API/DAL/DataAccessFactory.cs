@@ -18,7 +18,7 @@ namespace DAL
         public static IRepo<Doctor, int, Doctor> DoctorData()
         {
             return new DoctorRepo();
-        }  
+        }
         public static IRepo<Staff, int, Staff> StaffData()
         {
             return new StaffRepo();
@@ -31,7 +31,7 @@ namespace DAL
         {
             return new OPDBillDetailsRepo();
         }
-        public static IRepo<IPDAdmit, int, IPDAdmit> IPDAdminData()
+        public static IRepo<IPDAdmit, int, IPDAdmit> IPDAdmitData()
         {
             return new IPDAdmitRepo();
         }
@@ -43,11 +43,15 @@ namespace DAL
         {
             return new DepartmentRepo();
         }
+        public static IRepo<Cabin, int, Cabin> CabinData()
+        {
+            return new CabinRepo();
+        }
         public static IAuth<bool> AuthData()
         {
             return new UserRepo();
         }
-        public static IRepo<Token,string,Token> TokenData()
+        public static IRepo<Token, string, Token> TokenData()
         {
             return new TokenRepo();
         }
