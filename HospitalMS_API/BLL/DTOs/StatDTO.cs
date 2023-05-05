@@ -15,7 +15,7 @@ namespace BLL.DTOs
         public int? OPDVisitDCount { get; set; }
         public int? CurrentMnOPDrv { get; set; }
         public int? CurrentMnIPDrv { get; set; }
-   
+
 
     }
 }

@@ -24,7 +24,7 @@ namespace BLL.DTOs
         public int Salary { get; set; }
         public int Fee { get; set; }
         public bool IsAvailable { get; set; }
-        public int TotalCount { get; set; }
-        public int isAvailableCount { get; set; }
+        //public int TotalCount { get; set; }
+        //public int isAvailableCount { get; set; }
     }
 }

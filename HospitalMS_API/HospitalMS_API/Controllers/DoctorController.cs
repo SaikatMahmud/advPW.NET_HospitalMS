@@ -102,5 +102,18 @@ namespace HospitalMS_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
         }
+        [HttpGet]
+        [Route("api/doctor/deptwise")]
+        public HttpResponseMessage RecepDoctorList()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, DoctorService.RecepDeptWiseDoctor());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
     }
 }

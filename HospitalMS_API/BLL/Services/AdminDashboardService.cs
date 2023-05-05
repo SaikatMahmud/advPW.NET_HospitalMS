@@ -40,13 +40,16 @@ namespace BLL.Services
 
             var cabin = DataAccessFactory.CabinData().Get();
             var bookedCabin = DataAccessFactory.IPDAdmitData().Get();
-            
+
             var availableCabin = cabin
                 .Where(c => !bookedCabin.Any(b => b.CabinId == c.Id && b.Status == "Booked"))
                 .Select(c => c.Id)
                 .ToList();
-
-
+            // today's revenue vs paid amount
+            var totalAmount = DataAccessFactory.OPDBillData().Get().Sum(x => x.BillAmount);
+            totalAmount += DataAccessFactory.IPDBillData().Get().Sum(x => x.TotalAmount);
+            var totalPaid = DataAccessFactory.OPDBillData().Get().Sum(x => x.PaidAmount);
+            totalPaid += DataAccessFactory.IPDBillData().Get().Sum(x => x.PaidAmount);
             var result = new AdminDashboardDTO()
             {
                 TotalDoctor = mapped.Count(),
@@ -56,6 +59,8 @@ namespace BLL.Services
                 TotalStaff = staff.Count(),
                 TotalCabin = cabin.Count(),
                 AvailableCabin = availableCabin.Count(),
+                TodayTotalAmount = totalAmount,
+                TodayTotalPaid = totalPaid
 
             };
             return result;

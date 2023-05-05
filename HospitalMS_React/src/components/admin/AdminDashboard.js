@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div align='center'><br/>
+    <div align='center'><br/><br/>
       <table border="2" align="center" cellPadding="10" width="30%">
         <tbody>
 
@@ -41,6 +41,7 @@ const AdminDashboard = () => {
           </tr>
           <tr><td><b>Staff</b><br />Total: {result.TotalStaff}</td>
             <td><b>Cabin</b><br />Total: {result.TotalCabin}<br />Available:{result.AvailableCabin}</td>
+            <td><b>Today's Revenue</b><br />Total: {result.TodayTotalAmount} Tk<br />Paid: {result.TodayTotalPaid} Tk</td>
           </tr>
         </tbody>
       </table>

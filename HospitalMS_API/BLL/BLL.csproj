@@ -50,6 +50,7 @@
     <Compile Include="DTOs\DoctorDeptDTO.cs" />
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
+    <Compile Include="DTOs\RecepDashboardDTO.cs" />
     <Compile Include="DTOs\StaffDTO.cs" />
     <Compile Include="DTOs\StatDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />

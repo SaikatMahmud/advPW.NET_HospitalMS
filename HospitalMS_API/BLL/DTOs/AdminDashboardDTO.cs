@@ -15,5 +15,7 @@ namespace BLL.DTOs
         public int? TotalStaff { get; set; }
         public int? TotalCabin { get; set; }
         public int? AvailableCabin { get; set; }
+        public int TodayTotalAmount { get; set; }
+        public int TodayTotalPaid { get; set; }
     }
 }
