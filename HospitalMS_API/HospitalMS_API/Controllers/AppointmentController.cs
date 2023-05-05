@@ -2,9 +2,11 @@
 using BLL.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -102,6 +104,46 @@ namespace HospitalMS_API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
+        }
+
+        [HttpGet]
+        [Route("api/appointment/pdf")]
+        public HttpResponseMessage Pdf()
+        {
+            var dataStream = RenderTestService.GetPDF();
+            HttpResponseMessage httpResponseMessage = Request.CreateResponse(HttpStatusCode.OK);
+            httpResponseMessage.Content = new StreamContent(dataStream);
+            httpResponseMessage.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment");
+            httpResponseMessage.Content.Headers.ContentDisposition.FileName = "bookName";
+            httpResponseMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+
+            //var pdfMemoryStream = RenderTestService.GetPDF();
+            //HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            //response.Content = new StreamContent(pdfMemoryStream);
+            //response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+            //response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            //{
+            //    FileName = "MyPDF.pdf"
+            //};
+            return httpResponseMessage;
+
+            //try
+            //{
+            //    var res = RenderTestService.GetPDF();
+            //    if (res != null)
+            //    {
+            //        return Request.CreateResponse(HttpStatusCode.OK, new { File(res, "application/pdf", "MyPDF.pdf");
+            //    });
+            //    }
+            //    else
+            //    {
+            //        return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = "Delete failed" });
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            //}
         }
     }
 }
