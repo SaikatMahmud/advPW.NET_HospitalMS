@@ -117,5 +117,34 @@ namespace BLL.Services
             }).ToList();
             return result; 
         }
+
+        public static List<DoctorDeptDTO> DoctorOfDept(int DeptId)
+        {
+            var data = (from d in DataAccessFactory.DoctorData().Get() where d.DeptId == DeptId select d).ToList();
+            
+            if (data != null)
+            {
+                var cfg = new MapperConfiguration(c =>
+                {
+                    c.CreateMap<Doctor, DoctorDeptDTO>();
+                    c.CreateMap<Department, DepartmentDTO>();
+                });
+                var mapper = new Mapper(cfg);
+                var mapped = mapper.Map<List<DoctorDeptDTO>>(data);
+                DateTime currentTime = DateTime.ParseExact(DateTime.Now.ToString("hh:mm tt"), "h:mm tt", CultureInfo.InvariantCulture);
+                foreach (var doctor in mapped)
+                {
+                    DateTime stayFrom = DateTime.ParseExact(doctor.StayFrom, "h:mm tt", CultureInfo.InvariantCulture);
+                    DateTime stayTill = DateTime.ParseExact(doctor.StayTill, "h:mm tt", CultureInfo.InvariantCulture);
+                    if (currentTime >= stayFrom && currentTime <= stayTill)
+                    {
+                        doctor.IsAvailable = true;
+                    }
+                    else { doctor.IsAvailable = false; }
+                }
+                return mapped;
+            }
+            return null;
+        }
     }
 }

@@ -25,6 +25,7 @@ import RcpDoctor from "./receptionist/RcpDoctor";
 import RcpIPDAdmit from "./receptionist/RcpIPDAdmit";
 import RcpPathology from "./receptionist/RcpPathology";
 import RcpPatient from "./receptionist/RcpPatient";
+import RcpDeptWiseDoctor from "./receptionist/RcpDeptWiseDoctor";
 
 // import ContactUs from "./ContactUs";
 // import SearchResult from "./customer/SearchResult";
@@ -89,11 +90,15 @@ const Main = () => {
                     <Route path="/dept/edit/:id" element={<EditDept />} />
 
                     <Route path="/receptionist/dashboard" element={<RcpDashboard />} />
-                    <Route path="/receptionist/appointment" element={<RcpAppointment />} />
+                    {/* <Route path="/receptionist/appointment" element={<RcpAppointment />} /> */}
+                    <Route path="/apointment/doctor/:id" element={<RcpAppointment />} />
                     <Route path="/receptionist/doctors" element={<RcpDoctor />} />
                     <Route path="/receptionist/ipd/admit" element={<RcpIPDAdmit />} />
                     <Route path="/receptionist/pathology" element={<RcpPathology />} />
                     <Route path="/receptionist/patient" element={<RcpPatient />} />
+                    <Route path="/receptionist/doctor/dept/:id" element={<RcpDeptWiseDoctor />} />
+
+                    
 
 
 

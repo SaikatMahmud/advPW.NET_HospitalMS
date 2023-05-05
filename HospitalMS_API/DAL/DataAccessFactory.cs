@@ -18,6 +18,10 @@ namespace DAL
         public static IRepo<Doctor, int, Doctor> DoctorData()
         {
             return new DoctorRepo();
+        } 
+        public static IRepo<Appointment, int, Appointment> AppointmentData()
+        {
+            return new AppointmentRepo();
         }
         public static IRepo<Staff, int, Staff> StaffData()
         {

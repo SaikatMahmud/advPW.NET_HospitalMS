@@ -111,6 +111,10 @@
     <Compile Include="Migrations\202305041542544_opdStatus.designer.cs">
       <DependentUpon>202305041542544_opdStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305051748209_appointment_fix.cs" />
+    <Compile Include="Migrations\202305051748209_appointment_fix.designer.cs">
+      <DependentUpon>202305051748209_appointment_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -200,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305041542544_opdStatus.resx">
       <DependentUpon>202305041542544_opdStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305051748209_appointment_fix.resx">
+      <DependentUpon>202305051748209_appointment_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

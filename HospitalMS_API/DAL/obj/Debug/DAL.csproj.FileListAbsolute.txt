@@ -25,3 +25,4 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\D
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.ipdFix2.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.ipdFix3.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.opdStatus.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.appointment_fix.resources

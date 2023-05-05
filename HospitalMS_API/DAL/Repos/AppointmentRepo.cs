@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public Appointment Create(Appointment obj)
         {
-            throw new NotImplementedException();
+            db.Appointments.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exAppoi = Get(id);
+            db.Appointments.Remove(exAppoi);
+            return db.SaveChanges() > 0;
         }
 
         public List<Appointment> Get()
         {
-            throw new NotImplementedException();
+            return db.Appointments.ToList();
         }
 
         public Appointment Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Appointments.Find(id);
         }
 
         public Appointment Update(Appointment obj)
         {
-            throw new NotImplementedException();
+            var exAppoi = Get(obj.Id);
+            db.Entry(exAppoi).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

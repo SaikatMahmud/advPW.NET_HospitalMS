@@ -115,5 +115,19 @@ namespace HospitalMS_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("api/doctor/dept/{id}")]
+        public HttpResponseMessage DoctorDept(int id)
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, DoctorService.DoctorOfDept(id));
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
     }
 }
