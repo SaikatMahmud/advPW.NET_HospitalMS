@@ -27,6 +27,10 @@ namespace DAL
         {
             return new StaffRepo();
         }
+        public static IRepo<DoctorsSchedule, int, DoctorsSchedule> DoctorScheduleData()
+        {
+            return new DoctorsScheduleRepo();
+        }
         public static IRepo<OPDBill, int, OPDBill> OPDBillData()
         {
             return new OPDBillRepo();
@@ -50,6 +54,15 @@ namespace DAL
         public static IRepo<Cabin, int, Cabin> CabinData()
         {
             return new CabinRepo();
+        }
+
+        public static IRepo<DiagList, int, DiagList> DiagListData()
+        {
+            return new DiagListRepo();
+        }
+        public static IRepo<PerformDiag, int, PerformDiag> PerformDiagData()
+        {
+            return new PerformDiagRepo();
         }
         public static IAuth<bool> AuthData()
         {

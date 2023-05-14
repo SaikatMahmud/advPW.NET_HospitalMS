@@ -7,9 +7,9 @@ const RcpLogin = () => {
                 <text><b>======== Receptionist ========</b></text><br/>
                 <span> <Link to="/receptionist/dashboard">Dashboard </Link> </span>|
                 <span> <Link to="/receptionist/doctors"> Doctors </Link> </span>|
-                <span> <Link to="/receptionist/appointment"> Appointments </Link></span>|
+                <span> <Link to="/receptionist/appointment/all"> Appointments </Link></span>|
                 <span> <Link to="/admin/dept/list"> Departments </Link></span>|
-                <span> <Link to="/receptionist/patient"> Patients </Link></span>|
+                <span> <Link to="/receptionist/patient/all"> Patients </Link></span>|
                 <span> <Link to="/receptionist/pathology"> Pathology </Link></span>|
                 <span> <Link to="/receptionist/ipd/admit"> IPD Admission </Link></span>
                 &emsp; &emsp; &emsp; &emsp;

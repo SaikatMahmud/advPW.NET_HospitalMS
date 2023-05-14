@@ -11,6 +11,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Html2pdf;
+using iText.Kernel.Geom;
 
 //using iText.Html2pdf;
 //using iTextSharp.text;
@@ -21,69 +22,78 @@ namespace BLL.Services
 {
     public class RenderTestService
     {
-        public static string RenderViewToString(string viewName, RenderTestDTO model)
+        public static string RenderViewToString(string viewName, RenderTestDTO obj)
         {
-            model = new RenderTestDTO()
+            obj = new RenderTestDTO()
             {
                 Name = "Saikat",
                 Age = 22,
                 Gender = "Male"
             };
             var razorEngineService = Engine.Razor;
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\BLL\\Views\\" + viewName + ".cshtml");
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\BLL\\Views\\" + viewName + ".cshtml");
             var viewContent = File.ReadAllText(filePath);
 
-            var result = razorEngineService.RunCompile(viewContent, filePath, null, model);
+            var result = razorEngineService.RunCompile(viewContent, filePath, null, obj);
 
             return result;
         }
-        public static MemoryStream GetPDF()
+        public static byte[] GetPDF(string title)
         {
             {
-                var model = new RenderTestDTO();
+                var obj = new RenderTestDTO();
                 // Render the view to a string
-                var html = RenderViewToString("AppointmentRecept", model).ToString();
-
-                //// Create a PDF document
-                //using (MemoryStream memoryStream = new MemoryStream())
-                //{
-                //    Document document = new Document();
-                //    PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
-                //    document.Open();
-
-                //    // Add the HTML content to the PDF
-                //    using (StringReader stringReader = new StringReader(html))
-                //    {
-                //        XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, stringReader);
-                //    }
-
-                //    document.Close();
-
-                //    // Return the PDF as a file download
-                //    return File(memoryStream.ToArray(), "application/pdf", "MyPDF.pdf");
-
-                // HTML string to convert to PDF
-
+                var html = RenderViewToString("TestView", obj).ToString();
 
                 // Create a PDF document
-                using (var pdfStream = new MemoryStream())
-                {
-                    var writer = new PdfWriter(pdfStream);
-                    var pdf = new PdfDocument(writer);
+                //using (var pdfStream = new MemoryStream())
+                //{
+                //    var writer = new PdfWriter(pdfStream);
+                //    var pdf = new PdfDocument(writer);
 
-                    // Convert HTML to PDF using pdfHTML
-                    ConverterProperties converterProperties = new ConverterProperties();
-                    HtmlConverter.ConvertToPdf(html, pdf, converterProperties);
+                //    // Convert HTML to PDF using pdfHTML
+                //    ConverterProperties converterProperties = new ConverterProperties();
+                //    HtmlConverter.ConvertToPdf(html, pdf, converterProperties);
 
-                    pdf.Close();
-                    writer.Close();
-                    return pdfStream;
-                    // Return the PDF as a file download
-                    //return File(pdfStream.ToArray(), "application/pdf", "MyPDF.pdf");
-                }
+                //    pdf.Close();
+                //    writer.Close();
+                //    return pdfStream;
+                //    // Return the PDF as a file download
+                //    //return File(pdfStream.ToArray(), "application/pdf", "MyPDF.pdf");
+                //}
+
+                MemoryStream ms = new MemoryStream();
+                //PdfWriter writer = new PdfWriter(ms);
+                PdfDocument pdfDocument = new PdfDocument(new PdfWriter(ms));
+                pdfDocument.SetDefaultPageSize(PageSize.A4);
+                pdfDocument.GetDocumentInfo().SetTitle(title);
+
+                //PageSize pageSize = PageSize.A4;
+                ConverterProperties converterProperties = new ConverterProperties();
+                HtmlConverter.ConvertToPdf(html, pdfDocument, converterProperties);
+
+                // Create a new PdfWriter object, passing the MemoryStream as a parameter
+                //  PdfWriter writer = new PdfWriter(ms, new WriterProperties().SetMediaSize(pageSize));
+                // PdfDocument pdf = new PdfDocument(writer).SetDefaultPageSize(pageSize);
+                //  PdfDocument pdfDocument = new PdfDocument(new PdfWriter(ms));
+                // pdfDocument.SetDefaultPageSize(PageSize.A3);
+                // Create a new HtmlConverter object and call its ConvertToPdf method, passing in the HTML string and the PdfWriter object
+
+                // Close the PdfWriter object
+                pdfDocument.Close();
+
+                // Get the bytes from the MemoryStream
+                byte[] pdfBytes = ms.ToArray();
+                return pdfBytes;
+
+
             }
         }
     }
 
 
 }
+//MemoryStream ms = new MemoryStream();
+//PdfWriter writer = new PdfWriter(ms);
+//HtmlConverter.ConvertToPdf(html, writer);
+//writer.Close();

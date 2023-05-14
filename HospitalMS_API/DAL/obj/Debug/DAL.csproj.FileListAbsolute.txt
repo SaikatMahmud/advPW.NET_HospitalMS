@@ -26,3 +26,12 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\D
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.ipdFix3.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.opdStatus.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.appointment_fix.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.doctorSchedule.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.doctorScheduleFix.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.appointmentFix.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.appointmentFix2.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.appointmentFix1.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.performDiagnosisFix.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.performDiagFix2.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.performDiagFix3.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.performDiagFix4.resources

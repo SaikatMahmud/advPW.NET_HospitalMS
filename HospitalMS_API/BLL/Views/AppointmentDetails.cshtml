@@ -1,0 +1,26 @@
+﻿
+<html>
+<body>
+    <div style="background: ghostwhite;
+            font-size: 20px;
+            padding: 25px;
+            border: 1px solid black;
+            margin-left: 200px; margin-right:200px; margin-top:10px">
+        <h2 align="center">XYZ Hospital Limited</h2>
+        <p align="center">Invoice of order <i></i></p>
+
+        <div align="left">
+            <div align="left">
+                <b>Doctor Name:</b> @Model.Doctor.Name<br><br />
+                <b>Doctor Room:</b> @Model.Doctor.Room<br><br/>
+            <b>Consult time:</b> @Model.ScheduleDate.ToString("yyyy-MM-dd") - @Model.ScheduleTime<br /><br />
+                <b>Patient Name:</b> @Model.Patient.Name<br><br />
+                <b>Patient contact :</b>@Model.Patient.Mobile<br /><br />
+                <b>Amount Paid:</b> @Model.PaidAmount<br /><br />
+            </div><br>
+
+        </div>
+        </div>
+</body>
+
+</html>

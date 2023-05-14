@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public DiagList Create(DiagList obj)
         {
-            throw new NotImplementedException();
+            db.DiagLists.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exDiag = Get(id);
+            db.DiagLists.Remove(exDiag);
+            return db.SaveChanges() > 0;
         }
 
         public List<DiagList> Get()
         {
-            throw new NotImplementedException();
+            return db.DiagLists.ToList();
         }
 
         public DiagList Get(int id)
         {
-            throw new NotImplementedException();
+            return db.DiagLists.Find(id);
         }
 
         public DiagList Update(DiagList obj)
         {
-            throw new NotImplementedException();
+            var exDiag = Get(obj.Id);
+            db.Entry(exDiag).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

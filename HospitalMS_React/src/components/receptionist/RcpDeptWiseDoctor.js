@@ -69,7 +69,7 @@ const RcpDeptWiseDoctor = () => {
                             <td>{doctor.Fee}</td>
 
                             <td>
-                                <button class='btn btn-warning'><Link class='text text-dark' to={`/appointment/doctor/${doctor.Id}`}> Book</Link></button>
+                                <button class='btn btn-warning'><Link class='text text-dark' to={`/appointment/doctor/${doctor.Id}/${doctor.Fee}`}> Book</Link></button>
 
                             </td>
                         </tbody>

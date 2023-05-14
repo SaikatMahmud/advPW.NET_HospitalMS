@@ -18,10 +18,7 @@ namespace BLL.DTOs
         public string Email { get; set; }
         public string Address { get; set; }
         public string Username { get; set; }
-        public int Age { get; set; }
-        public int OPDCount { get; set; }
-        public int IPDCount { get; set; }
-        public int TotalPaid { get; set; }
+
         //public List<Prescription> Prescriptions { get; set; }
         //public List<Appointment> Appointments { get; set; }
         //public List<IPDAdmit> IPDAdmits { get; set; }

@@ -189,7 +189,30 @@
             //    }
             //        context.OPDBills.AddOrUpdate(existingData);
             //}
+            // string[] times = { "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "2:00 pm", "2:30 pm", "3:00 pm", "4:15 pm", "4:45 pm"};
+            //for (int i = 35; i < 58; i++)
+            // {
+            //     foreach (var item in times)
+            //     {
+            //         context.DoctorsSchedules.AddOrUpdate(new DoctorsSchedule
+            //         {
+            //             DoctorId = i,
+            //             SlotTime = item
+            //         });
 
+            //     }
+            // }
+
+            for (int i = 1; i < 60; i++)
+            {
+
+                context.DiagLists.AddOrUpdate(new DiagList
+                {
+                    Name = "Diagnosis_" + i,
+                    Cost = random.Next(1000, 5001),
+                    DeptId = random.Next(1,10)
+                });
+            }
 
         }
     }

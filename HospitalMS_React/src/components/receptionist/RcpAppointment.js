@@ -1,68 +1,135 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosConfig from "../axiosConfig";
-import { useNavigate } from "react-router-dom";
-//import TimeField from 'react-simple-timefield';
-//import TimePicker from 'react-time-picker';
-//import TimeRangePicker from '@wojtekmaj/react-timerange-picker'
-import Timekeeper from 'react-timekeeper';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-//import "../NoBootstrap.css";
+import { Link } from "react-router-dom";
+import fileDownload from "js-file-download";
+
 
 
 const RcpAppointment = () => {
     const { id } = useParams();
     const [result, setResult] = useState([]);
     const [isReady, setIsReady] = useState(false);
-    const [errs, setErrs] = useState([]);
-    const navigate = useNavigate();
 
-    const [doctorId, setDoctorId] = useState(id);
-    const [patientId, setPatientId] = useState("");
-    const [scheduleDate, setScheduleDate] = useState(new Date());
-    const [scheduleTime, setScheduleTime] = useState("5:00 pm");
+    useEffect(() => {
+        axiosConfig.get("/appointment/all").then((rsp) => {
+            debugger
+            setResult(rsp.data);
+            setIsReady(true);
+        }, (err) => {
+            debugger
+        })
 
-    const [showTime1, setShowTime1] = useState(false);
-    const [showTime2, setShowTime2] = useState(false);
+    }, []);
 
-    const BookAppointment = (event) => {
-         event.preventDefault();
-         var data = {DoctorId:doctorId, PatientId:patientId,ScheduleDate:scheduleDate,ScheduleTime:scheduleTime};
-        axiosConfig.post("/appointment/add", data).
-             then((rsp) => {
-                 debugger;
-               // navigate({ pathname: '/admin/doctor/list' });
-            }, (err) => {
-                debugger;
-                setErrs(err.response.data);
-            })
+
+    const cancelAppointment = (id) => {
+        axiosConfig.get(`/appointment/cancel/${id}`).then((rsp) => {
+          debugger
+         // setResult(rsp.data);
+          axiosConfig.get("/appointment/all").then((rsp) => {
+            debugger
+            setResult(rsp.data);
+            setIsReady(true);
+        }, (err) => {
+            debugger
+        })
+
+        //  setRemove("Order cancelled");
+        }, (err) => {
+         // setErrs(err.response.data);
+    
+        })
+      }
+
+      const closeAppointment = (id) => {
+        axiosConfig.get(`/appointment/close/${id}`).then((rsp) => {
+          debugger
+         // setResult(rsp.data);
+          axiosConfig.get("/appointment/all").then((rsp) => {
+            debugger
+            setResult(rsp.data);
+            setIsReady(true);
+        }, (err) => {
+            debugger
+        })
+
+        //  setRemove("Order cancelled");
+        }, (err) => {
+         // setErrs(err.response.data);
+    
+        })
+      }
+
+      const printAppointment = (id) => {
+        axiosConfig.get(`/appointment/print/${id}`, { responseType: 'blob' }).then((rsp) => {
+          debugger
+          // saveAs(rsp.blob,'order_recipt.pdf');
+          fileDownload(rsp.data, "appointment_"+id+".pdf");
+    
+        }, (err) => {
+          //setErrs(err.response.data);
+    
+        })
+       
+      }
+
+
+    if (!isReady) {
+        return <h2 align="center">Page loading....</h2>
     }
 
-    // if (!isReady) {
-    //     return <h2 align="center">Page loading....</h2>
-    // }
 
     return (
-        <div>
-            <br /><br />
-            <p align="center"><b>Book an appointment</b></p>
-            <span>{errs.Msg ? errs.Msg : ''}</span>
-            <form onSubmit={BookAppointment}>
-                Doctor ID: <input defaultValue={doctorId ? doctorId : ""} onChange={(e) => { setDoctorId(e.target.value) }} type="text" /><br />
-                Patient ID: <input value={patientId} onChange={(e) => { setPatientId(e.target.value) }} type="text" /><br />
-                Schedule date: <DatePicker selected={scheduleDate} onChange={(e) => { setScheduleDate(e) }} type="text" /><br />
-                Schedule Time: <input value={scheduleTime} onClick={() => { setShowTime1(true) }} type="text" readOnly /><br />
-                {showTime1 &&
-                    <Timekeeper time={scheduleTime} onChange={(e) => { setScheduleTime(e.formatted12) }}
-                        onDoneClick={() => setShowTime1(false)}
-                        switchToMinuteOnHourSelect />
+        <div align='center'><br />
+            <p align="center"><b>Appointments list</b></p>
+
+            <table border="2" align="center" class="table">
+
+                <th>Patient Id</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Scheduled</th>
+                <th>Status</th>
+
+                {
+                    result?.map((appointment, index) =>
+                        <tbody align="center">
+                            {/* <td>{index + 1}</td> */}
+                            {/* <td><Link to={`/details/order/${order.order_id}`}>#{order.order_id}</Link></td> */}
+                            <td>{appointment.PatientId}</td>
+                            <td>{appointment.Patient.Name}</td>
+                            <td>{appointment.Doctor.Name}</td>
+                            <td>{appointment.ScheduleDate}, {appointment.ScheduleTime}</td>
+                            <td>{appointment.Status}</td>
+                            <td>
+                                {
+                                    appointment.Status == 'Open' &&
+                                    <button class='btn btn-warning'><Link class='text text-dark' to={`/appointment/modify/${appointment.Id}`}>Modify</Link></button>
+                                }
+                                {
+                                    appointment.Status == 'Open' && 
+                                    <button class='btn btn-danger' onClick={() => cancelAppointment(appointment.Id)}>Cancel</button>
+                                }
+                                 {
+                                    (appointment.Status == 'Paid' &&  appointment.Status != 'Closed') &&
+                                    <button class='btn btn-success' onClick={() => closeAppointment(appointment.Id)}>Close</button>
+                                }
+                                {
+                                    (appointment.Status == 'Paid' ||  appointment.Status == 'Closed') &&
+                                    <button class='btn btn-info' onClick={() => printAppointment(appointment.Id)}>Print</button>
+                                }
+                            </td>           
+                        </tbody>
+                    )
                 }
 
-                <br /><input type="submit" value="Proceed" />
-            </form>
-        </div>
+            </table>
+
+        </div >
     )
+
+
 }
 
 export default RcpAppointment;

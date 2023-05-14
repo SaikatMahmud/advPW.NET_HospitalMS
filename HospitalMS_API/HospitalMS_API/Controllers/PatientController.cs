@@ -12,10 +12,10 @@ using System.Web.Http.Cors;
 namespace HospitalMS_API.Controllers
 {
     [EnableCors("*", "*", "*")]
+    [Logged]
     public class PatientController : ApiController
     {
-        [Logged]
-        [AdminAccess]
+        //[AdminAccess]
         [HttpGet]
         [Route("api/patient/all")]
         public HttpResponseMessage Get()
@@ -29,7 +29,19 @@ namespace HospitalMS_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
-        [Logged]
+        [HttpGet]
+        [Route("api/receptionist/patient/all")]
+        public HttpResponseMessage PatientsOnly()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, PatientService.GetPatients());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
         [HttpGet]
         [Route("api/patient/{id}")]
         public HttpResponseMessage Get(int id)

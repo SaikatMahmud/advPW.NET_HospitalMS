@@ -12,27 +12,35 @@ namespace DAL.Repos
     {
         public PerformDiag Create(PerformDiag obj)
         {
-            throw new NotImplementedException();
+           
+            db.PerformDiags.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exDiag = Get(id);
+            db.PerformDiags.Remove(exDiag);
+            return db.SaveChanges() > 0;
         }
 
         public List<PerformDiag> Get()
         {
-            throw new NotImplementedException();
+            return db.PerformDiags.ToList();
         }
 
         public PerformDiag Get(int id)
         {
-            throw new NotImplementedException();
+            return db.PerformDiags.Find(id);
         }
 
         public PerformDiag Update(PerformDiag obj)
         {
-            throw new NotImplementedException();
+            var exDiag = Get(obj.Id);
+            db.Entry(exDiag).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

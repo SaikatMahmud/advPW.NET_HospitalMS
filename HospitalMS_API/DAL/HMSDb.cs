@@ -29,5 +29,6 @@ namespace DAL
         public DbSet<Ward> Wards { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Token> Tokens { get; set; }
+        public DbSet<DoctorsSchedule> DoctorsSchedules { get; set; }
     }
 }

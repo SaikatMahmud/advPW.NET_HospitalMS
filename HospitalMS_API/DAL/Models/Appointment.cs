@@ -15,6 +15,7 @@ namespace DAL.Models
         public DateTime ScheduleDate { get; set; }
         public string ScheduleTime { get; set; }
         public DateTime BookTime { get; set; }
+        public int Fee { get; set; }
         public string Status { get; set; }
         [ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }

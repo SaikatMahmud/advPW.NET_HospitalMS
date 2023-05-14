@@ -33,10 +33,12 @@ namespace DAL.Models
         public virtual Department Department { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<OPDBillDetails> OPDBillDetails { get; set; }
+        public virtual ICollection<DoctorsSchedule> DoctorsSchedules { get; set; }
         public Doctor()
         {
             Appointments = new List<Appointment>();
             OPDBillDetails = new List<OPDBillDetails>();
+            DoctorsSchedules = new List<DoctorsSchedule>();
         }
 
     }

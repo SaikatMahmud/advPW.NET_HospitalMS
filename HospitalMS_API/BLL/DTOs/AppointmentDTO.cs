@@ -14,6 +14,11 @@ namespace BLL.DTOs
         public DateTime ScheduleDate { get; set; }
         public string ScheduleTime { get; set; }
         public DateTime BookTime { get; set; }
+        public int Fee { get; set; }
         public string Status { get; set; }
+        public PatientDTO Patient { get; set; }
+        public DoctorDTO Doctor { get; set; }
+       // public DepartmentDTO Depapartment { get; set; }
+       
     }
 }

@@ -1,4 +1,5 @@
-﻿using BLL.DTOs;
+﻿using AutoMapper;
+using BLL.DTOs;
 using DAL;
 using DAL.Models;
 using DAL.Repos;
@@ -20,6 +21,17 @@ namespace BLL.Services
         {
             var data = DataAccessFactory.PatientData().Get();
             return Convert(data);
+        }
+        public static List<PatientDTO> GetPatients()
+        {
+            var data = DataAccessFactory.PatientData().Get();
+            var cfg = new MapperConfiguration(c =>
+            {
+                c.CreateMap<Patient, PatientDTO>();
+               
+            });
+            var mapper = new Mapper(cfg);
+            return mapper.Map<List<PatientDTO>>(data);
         }
         public static PatientDTO Get(int id)
         {
@@ -85,7 +97,7 @@ namespace BLL.Services
             var data = new List<PatientDTO>();
             foreach (var patient in patients)
             {
-                data.Add(new PatientDTO()
+                data.Add(new PatientInfoDTO()
                 {
                     Id = patient.Id,
                     Name = patient.Name,
@@ -124,13 +136,11 @@ namespace BLL.Services
                 Email = patient.Email,
                 Address = patient.Address,
                 Username = patient.Username,
-             
-
             };
         }
         static PatientDTO Convert(Patient patient)
         {
-            return new PatientDTO()
+            return new PatientInfoDTO()
             {
                 Id = patient.Id,
                 Name = patient.Name,

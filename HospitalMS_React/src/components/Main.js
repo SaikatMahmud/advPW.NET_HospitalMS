@@ -18,6 +18,7 @@ import AddStaff from "./admin/AddStaff";
 import EditDoctor from "./admin/EditDoctor";
 import EditStaff from "./admin/EditStaff";
 import EditDept from "./admin/EditDept";
+import EditPatient from "./receptionist/EditPatient";
 
 import RcpDashboard from "./receptionist/RcpDashboard";
 import RcpAppointment from "./receptionist/RcpAppointment";
@@ -26,7 +27,8 @@ import RcpIPDAdmit from "./receptionist/RcpIPDAdmit";
 import RcpPathology from "./receptionist/RcpPathology";
 import RcpPatient from "./receptionist/RcpPatient";
 import RcpDeptWiseDoctor from "./receptionist/RcpDeptWiseDoctor";
-
+import RcpBookAppointment from "./receptionist/RcpBookAppointment";
+import ModifyAppointment from "./receptionist/ModifyAppointment";
 // import ContactUs from "./ContactUs";
 // import SearchResult from "./customer/SearchResult";
 // import Cart from "./customer/Cart";
@@ -90,13 +92,16 @@ const Main = () => {
                     <Route path="/dept/edit/:id" element={<EditDept />} />
 
                     <Route path="/receptionist/dashboard" element={<RcpDashboard />} />
-                    {/* <Route path="/receptionist/appointment" element={<RcpAppointment />} /> */}
-                    <Route path="/apointment/doctor/:id" element={<RcpAppointment />} />
+                    <Route path="/receptionist/appointment/all" element={<RcpAppointment />} />
+                    <Route path="/appointment/doctor/:id/:fee" element={<RcpBookAppointment />} />
                     <Route path="/receptionist/doctors" element={<RcpDoctor />} />
                     <Route path="/receptionist/ipd/admit" element={<RcpIPDAdmit />} />
                     <Route path="/receptionist/pathology" element={<RcpPathology />} />
-                    <Route path="/receptionist/patient" element={<RcpPatient />} />
+                    <Route path="/receptionist/patient/all" element={<RcpPatient />} />
                     <Route path="/receptionist/doctor/dept/:id" element={<RcpDeptWiseDoctor />} />
+                    <Route path="/appointment/modify/:id" element={<ModifyAppointment />} />
+                    <Route path="/patient/edit/:id" element={<EditPatient />} />
+
 
                     
 

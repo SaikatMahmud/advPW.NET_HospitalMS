@@ -115,6 +115,42 @@
     <Compile Include="Migrations\202305051748209_appointment_fix.designer.cs">
       <DependentUpon>202305051748209_appointment_fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305121655159_doctorSchedule.cs" />
+    <Compile Include="Migrations\202305121655159_doctorSchedule.designer.cs">
+      <DependentUpon>202305121655159_doctorSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121658247_doctorScheduleFix.cs" />
+    <Compile Include="Migrations\202305121658247_doctorScheduleFix.designer.cs">
+      <DependentUpon>202305121658247_doctorScheduleFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121741139_appointmentFix.cs" />
+    <Compile Include="Migrations\202305121741139_appointmentFix.designer.cs">
+      <DependentUpon>202305121741139_appointmentFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305121742522_appointmentFix2.cs" />
+    <Compile Include="Migrations\202305121742522_appointmentFix2.designer.cs">
+      <DependentUpon>202305121742522_appointmentFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305132059471_appointmentFix1.cs" />
+    <Compile Include="Migrations\202305132059471_appointmentFix1.designer.cs">
+      <DependentUpon>202305132059471_appointmentFix1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305141025026_performDiagnosisFix.cs" />
+    <Compile Include="Migrations\202305141025026_performDiagnosisFix.designer.cs">
+      <DependentUpon>202305141025026_performDiagnosisFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305141632114_performDiagFix2.cs" />
+    <Compile Include="Migrations\202305141632114_performDiagFix2.designer.cs">
+      <DependentUpon>202305141632114_performDiagFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305141652425_performDiagFix3.cs" />
+    <Compile Include="Migrations\202305141652425_performDiagFix3.designer.cs">
+      <DependentUpon>202305141652425_performDiagFix3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305141654388_performDiagFix4.cs" />
+    <Compile Include="Migrations\202305141654388_performDiagFix4.designer.cs">
+      <DependentUpon>202305141654388_performDiagFix4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -123,6 +159,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DiagList.cs" />
     <Compile Include="Models\Doctor.cs" />
+    <Compile Include="Models\DoctorsSchedule.cs" />
     <Compile Include="Models\IPDAdmit.cs" />
     <Compile Include="Models\IPDBill.cs" />
     <Compile Include="Models\LeaveApplication.cs" />
@@ -143,6 +180,7 @@
     <Compile Include="Repos\DepartmentRepo.cs" />
     <Compile Include="Repos\DiagListRepo.cs" />
     <Compile Include="Repos\DoctorRepo.cs" />
+    <Compile Include="Repos\DoctorsScheduleRepo.cs" />
     <Compile Include="Repos\IPDAdmitRepo.cs" />
     <Compile Include="Repos\IPDBillRepo.cs" />
     <Compile Include="Repos\LeaveApplicationRepo.cs" />
@@ -207,6 +245,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305051748209_appointment_fix.resx">
       <DependentUpon>202305051748209_appointment_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121655159_doctorSchedule.resx">
+      <DependentUpon>202305121655159_doctorSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121658247_doctorScheduleFix.resx">
+      <DependentUpon>202305121658247_doctorScheduleFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121741139_appointmentFix.resx">
+      <DependentUpon>202305121741139_appointmentFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305121742522_appointmentFix2.resx">
+      <DependentUpon>202305121742522_appointmentFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305132059471_appointmentFix1.resx">
+      <DependentUpon>202305132059471_appointmentFix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305141025026_performDiagnosisFix.resx">
+      <DependentUpon>202305141025026_performDiagnosisFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305141632114_performDiagFix2.resx">
+      <DependentUpon>202305141632114_performDiagFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305141652425_performDiagFix3.resx">
+      <DependentUpon>202305141652425_performDiagFix3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305141654388_performDiagFix4.resx">
+      <DependentUpon>202305141654388_performDiagFix4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
