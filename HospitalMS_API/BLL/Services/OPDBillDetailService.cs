@@ -21,6 +21,7 @@ namespace BLL.Services
             {
                 var result = new OPDBillAllDetailsDTO
                 {
+                    OPDBillId = odpBilId,
                     PatientName = opdBill.Patient.Name,
                     TotalAmount = opdBill.BillAmount,
                     PaidAmount = opdBill.PaidAmount,
@@ -63,6 +64,11 @@ namespace BLL.Services
             //    return mapped;
             //}
             //return null;
+        }
+        public static byte[] PrintOPDBillDetails(int opdBillId)
+        {
+            var result = BLL.GeneratePDF.GetPDF("OPDBillAllDetails", GetAllInfo(opdBillId));
+            return result;
         }
     }
 }

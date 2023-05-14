@@ -9,6 +9,7 @@ namespace BLL.DTOs
 {
     public class OPDBillAllDetailsDTO
     {
+        public int OPDBillId { get; set; }
         public string PatientName { get; set; }
         public string DoctorName { get; set; }
         public int TotalAmount { get; set; }

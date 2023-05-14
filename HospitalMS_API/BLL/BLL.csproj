@@ -177,6 +177,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Views\AppointmentDetails.cshtml" />
+    <None Include="Views\OPDBillAllDetails.cshtml" />
     <None Include="Views\TestView.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

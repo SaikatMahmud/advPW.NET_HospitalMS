@@ -25,6 +25,15 @@ namespace BLL
             var result = razorEngineService.RunCompile(viewContent, filePath, null, obj);
             return result;
         }
+        public static string RenderToString(string viewName, OPDBillAllDetailsDTO obj)
+        {
+            var razorEngineService = Engine.Razor;
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\BLL\\Views\\" + viewName + ".cshtml");
+            var viewContent = File.ReadAllText(filePath);
+            var result = razorEngineService.RunCompile(viewContent, filePath, null, obj);
+            var count = 0;
+            return result;
+        }
 
         public static byte[] GetPDF(string viewName, AppointmentDTO obj)
         {
@@ -34,6 +43,23 @@ namespace BLL
                 PdfDocument pdfDocument = new PdfDocument(new PdfWriter(ms));
                 pdfDocument.SetDefaultPageSize(PageSize.A4);
                 pdfDocument.GetDocumentInfo().SetTitle("appointment_"+obj.Id);
+
+                ConverterProperties converterProperties = new ConverterProperties();
+                HtmlConverter.ConvertToPdf(html, pdfDocument, converterProperties);
+              
+                pdfDocument.Close();
+                byte[] pdfBytes = ms.ToArray();
+                return pdfBytes;
+            }
+        } 
+        public static byte[] GetPDF(string viewName, OPDBillAllDetailsDTO obj)
+        {
+            {
+                var html = RenderToString(viewName, obj).ToString();
+                MemoryStream ms = new MemoryStream();
+                PdfDocument pdfDocument = new PdfDocument(new PdfWriter(ms));
+                pdfDocument.SetDefaultPageSize(PageSize.A4);
+                pdfDocument.GetDocumentInfo().SetTitle("OPD_Bill_"+obj.OPDBillId);
 
                 ConverterProperties converterProperties = new ConverterProperties();
                 HtmlConverter.ConvertToPdf(html, pdfDocument, converterProperties);
