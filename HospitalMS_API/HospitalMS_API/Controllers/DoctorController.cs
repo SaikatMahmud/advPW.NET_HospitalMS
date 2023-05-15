@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using HospitalMS_API.Filter;
 
 namespace HospitalMS_API.Controllers
 {
@@ -15,11 +16,24 @@ namespace HospitalMS_API.Controllers
     {
         [HttpGet]
         [Route("api/doctor/all")]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get([FromUri] PagingModel pagingModel)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, DoctorService.Get());
+                var source = DoctorService.Get();
+                if (pagingModel == null)
+                {
+                    pagingModel = new PagingModel();
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
+                else
+                {
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
             }
             catch (Exception ex)
             {

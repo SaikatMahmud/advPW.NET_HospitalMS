@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosConfig from "../axiosConfig";
 import { Link } from "react-router-dom";
+import Pagination from "react-js-pagination";
+
 
 
 const AdminPatient = () => {
@@ -10,14 +12,14 @@ const AdminPatient = () => {
     const [isReady, setIsReady] = useState(false);
     const [msgDelete, setDelete] = useState("");
     const [totalPatients, setTotalPatients] = useState(0);
-  //  const [availableDoctors, setAvailableDoctors] = useState(0);
+    //  const [availableDoctors, setAvailableDoctors] = useState(0);
 
     useEffect(() => {
-        axiosConfig.get("/patient/all").then((rsp) => {
+        axiosConfig.get("/patient/all?pageNumber=1&pageSize=6").then((rsp) => {
             debugger
             setResult(rsp.data);
             setTotalPatients(rsp.data.length);
-           // setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
+            // setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
             setIsReady(true);
         }, (err) => {
             debugger
@@ -42,9 +44,27 @@ const AdminPatient = () => {
     //     }, (err) => {
     //         debugger
     //      // setErrs(err.response.data);
-    
+
     //     })
     //   }
+    const handlePageChange = (pageNumber) => {
+
+        console.log(`active page is ${pageNumber}`);
+        // const searchPage = { search: keyword, page: pageNumber };
+        //axiosConfig.post("/search", keyword);
+        // this.setState({ activePage: pageNumber });
+        // axiosConfig.post("/search",searchPage).then((rsp) => {
+        axiosConfig.get(`/patient/all?pageNumber=${pageNumber}&pageSize=6`).then((rsp) => {
+
+            debugger
+            setResult(rsp.data);
+            setTotalPatients(rsp.data.length);
+            setIsReady(true);
+            // console.log(rsp.data);
+        }, (err) => {
+            debugger
+        })
+    }
 
     if (!isReady) {
         return <h2 align="center">Page loading....</h2>
@@ -54,7 +74,7 @@ const AdminPatient = () => {
         <div align='center'>
             <br /><br />
             <p align="center"><b>Patient list</b></p>
-            <span><b>Registered:  {totalPatients}</b></span><br/><span></span><br/>
+            <span><b>Registered:  {totalPatients}</b></span><br /><span></span><br />
             {/* <span><b>Available:{availableDoctors}</b></span><br/> */}
             <span><b><i>{msgDelete ? msgDelete : ''}</i></b><br /></span>
             <table border="2" align="center" cellPadding="10" width="30%">
@@ -68,7 +88,7 @@ const AdminPatient = () => {
                 <th>IPD Count</th>
                 <th>Total Paid</th>
                 {
-                    result?.map((patient, index) =>
+                    result.Data?.map((patient, index) =>
                         <tbody align="center">
                             {/* <td>{index + 1}</td> */}
                             {/* <td><Link to={`/details/order/${order.order_id}`}>#{order.order_id}</Link></td> */}
@@ -107,7 +127,7 @@ const AdminPatient = () => {
                     )
                 }
 
-            </table> 
+            </table>
             {/* & emsp;& emsp;& emsp;& emsp; */}
             {/* <table border="2" align="center" cellPadding="10" width="30%">
                 <td>
@@ -116,8 +136,18 @@ const AdminPatient = () => {
                 </td>
 
             </table> */}
-        </div >
-    )
+            <br/>
+            <div class="pagination justify-content-center">
+
+                <Pagination
+                    activePage={result.Page.CurrentPage}
+                    itemsCountPerPage={result.Page.PageSize}
+                    totalItemsCount={result.Page.TotalCount}
+                    pageRangeDisplayed={5}
+                    onChange={handlePageChange.bind(this)}
+                    itemClass="page-item"
+                    linkClass="page-link" /></div>
+        </div >)
 }
 
 export default AdminPatient;

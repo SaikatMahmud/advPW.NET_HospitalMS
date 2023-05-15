@@ -1,11 +1,13 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
 using HospitalMS_API.Auth;
+using HospitalMS_API.Filter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Contexts;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -18,11 +20,27 @@ namespace HospitalMS_API.Controllers
         //[AdminAccess]
         [HttpGet]
         [Route("api/patient/all")]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get([FromUri] PagingModel pagingModel)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, PatientService.Get());
+                var source = PatientService.Get();
+
+                if (pagingModel == null)
+                {
+                    pagingModel = new PagingModel();
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
+                else
+                {
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
+
+                // return Request.CreateResponse(HttpStatusCode.OK, PatientService.Get());
             }
             catch (Exception ex)
             {
@@ -31,11 +49,24 @@ namespace HospitalMS_API.Controllers
         }
         [HttpGet]
         [Route("api/receptionist/patient/all")]
-        public HttpResponseMessage PatientsOnly()
+        public HttpResponseMessage PatientsOnly([FromUri] PagingModel pagingModel)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, PatientService.GetPatients());
+                var source = PatientService.GetPatients();
+                if (pagingModel == null)
+                {
+                    pagingModel = new PagingModel();
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
+                else
+                {
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
             }
             catch (Exception ex)
             {

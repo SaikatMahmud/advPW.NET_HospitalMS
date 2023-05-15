@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using HospitalMS_API.Filter;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,11 +18,24 @@ namespace HospitalMS_API.Controllers
     {
         [HttpGet]
         [Route("api/appointment/all")]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get([FromUri] PagingModel pagingModel)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, AppointmentService.Get());
+                var source = AppointmentService.Get();
+                if (pagingModel == null)
+                {
+                    pagingModel = new PagingModel();
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
+                else
+                {
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
             }
             catch (Exception ex)
             {
@@ -92,7 +106,7 @@ namespace HospitalMS_API.Controllers
             try
             {
                 var res = AppointmentService.CancelAppointment(id);
-                    return Request.CreateResponse(HttpStatusCode.OK, new { Msg = "Appointment cancelled"});
+                return Request.CreateResponse(HttpStatusCode.OK, new { Msg = "Appointment cancelled" });
             }
             catch (Exception ex)
             {

@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosConfig from "../axiosConfig";
 import { Link } from "react-router-dom";
+import Pagination from "react-js-pagination";
+
 
 
 const RcpPatient = () => {
@@ -13,7 +15,7 @@ const RcpPatient = () => {
   //  const [availableDoctors, setAvailableDoctors] = useState(0);
 
     useEffect(() => {
-        axiosConfig.get("/receptionist/patient/all").then((rsp) => {
+        axiosConfig.get("/receptionist/patient/all?pageNumber=1&pageSize=6").then((rsp) => {
             debugger
             setResult(rsp.data);
             setTotalPatients(rsp.data.length);
@@ -24,6 +26,25 @@ const RcpPatient = () => {
         })
 
     }, []);
+    const handlePageChange = (pageNumber) => {
+
+        console.log(`active page is ${pageNumber}`);
+        // const searchPage = { search: keyword, page: pageNumber };
+        //axiosConfig.post("/search", keyword);
+        // this.setState({ activePage: pageNumber });
+        // axiosConfig.post("/search",searchPage).then((rsp) => {
+        axiosConfig.get(`/receptionist/patient/all?pageNumber=${pageNumber}&pageSize=6`).then((rsp) => {
+
+            debugger
+            setResult(rsp.data);
+            setResult(rsp.data);
+            setTotalPatients(rsp.data.length);
+            setIsReady(true);
+            // console.log(rsp.data);
+        }, (err) => {
+            debugger
+        })
+    }
 
     // const deleteDoctor = (id) => {
     //     axiosConfig.post(`/doctor/delete/${id}`).then((rsp) => {
@@ -65,7 +86,7 @@ const RcpPatient = () => {
                 <th>Gender</th>
                 <th>Mobile</th>
                 {
-                    result?.map((patient, index) =>
+                    result.Data?.map((patient, index) =>
                         <tbody align="center">
                             {/* <td>{index + 1}</td> */}
                             {/* <td><Link to={`/details/order/${order.order_id}`}>#{order.order_id}</Link></td> */}
@@ -88,7 +109,18 @@ const RcpPatient = () => {
                 }
 
             </table> 
-          
+            <br/>
+            <div class="pagination justify-content-center">
+
+                <Pagination
+                    activePage={result.Page.CurrentPage}
+                    itemsCountPerPage={result.Page.PageSize}
+                    totalItemsCount={result.Page.TotalCount}
+                    pageRangeDisplayed={5}
+                    onChange={handlePageChange.bind(this)}
+                    itemClass="page-item"
+                    linkClass="page-link" /></div>
+    
         </div >
     )
 }

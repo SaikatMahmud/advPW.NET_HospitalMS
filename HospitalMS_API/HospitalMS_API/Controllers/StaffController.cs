@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using HospitalMS_API.Filter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,24 @@ namespace HospitalMS_API.Controllers
     {
         [HttpGet]
         [Route("api/staff/all")]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get([FromUri] PagingModel pagingModel)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, StaffService.Get());
+                var source = StaffService.Get();
+                if (pagingModel == null)
+                {
+                    pagingModel = new PagingModel();
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
+                else
+                {
+                    var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
+                    var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                }
             }
             catch (Exception ex)
             {

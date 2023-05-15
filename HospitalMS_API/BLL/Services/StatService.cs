@@ -1,10 +1,12 @@
 ﻿using BLL.DTOs;
 using DAL;
+using iText.IO.Font;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +14,25 @@ namespace BLL.Services
 {
     public class StatService
     {
+        public static Dictionary<int, string> monthNames = new Dictionary<int, string>
+                {
+                    {1, "January"},
+                    {2, "February"},
+                    {3, "March"},
+                    {4, "April"},
+                    {5, "May"},
+                    {6, "June"},
+                    {7, "July"},
+                    {8, "August"},
+                    {9, "September"},
+                    {10, "October"},
+                    {11, "November"},
+                    {12, "December"}
+                };
         public static List<StatDTO> GetMonthlyOPDStat()
         {
+
+
             var data = DataAccessFactory.OPDBillData().Get();
             // Get the current date and the date six months ago
             DateTime currentDate = DateTime.Today;
@@ -26,6 +45,7 @@ namespace BLL.Services
                 .Select(g => new { Month = g.Key.Month, PatientCount = (g.Select(x => x.PatientId).Distinct().Count()) })
                 .OrderByDescending(x => x.Month)
                 .ToList();
+           // fetched = fetched.OrderByDescending(x => monthNames[x.Month]).ToList();
 
             // Create the array of arrays
             //var result = fetced.Select(x => new object[] { CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(x.Month), x.PatientCount })

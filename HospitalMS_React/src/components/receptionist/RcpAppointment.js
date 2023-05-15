@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axiosConfig from "../axiosConfig";
 import { Link } from "react-router-dom";
 import fileDownload from "js-file-download";
-
+import Pagination from "react-js-pagination";
 
 
 const RcpAppointment = () => {
@@ -12,7 +12,7 @@ const RcpAppointment = () => {
     const [isReady, setIsReady] = useState(false);
 
     useEffect(() => {
-        axiosConfig.get("/appointment/all").then((rsp) => {
+        axiosConfig.get("/appointment/all?pageNumber=1&pageSize=6").then((rsp) => {
             debugger
             setResult(rsp.data);
             setIsReady(true);
@@ -25,54 +25,70 @@ const RcpAppointment = () => {
 
     const cancelAppointment = (id) => {
         axiosConfig.get(`/appointment/cancel/${id}`).then((rsp) => {
-          debugger
-         // setResult(rsp.data);
-          axiosConfig.get("/appointment/all").then((rsp) => {
             debugger
-            setResult(rsp.data);
-            setIsReady(true);
-        }, (err) => {
-            debugger
-        })
+            // setResult(rsp.data);
+            axiosConfig.get("/appointment/all?pageNumber=1&pageSize=6").then((rsp) => {
+                debugger
+                setResult(rsp.data);
+                setIsReady(true);
+            }, (err) => {
+                debugger
+            })
 
-        //  setRemove("Order cancelled");
+            //  setRemove("Order cancelled");
         }, (err) => {
-         // setErrs(err.response.data);
-    
-        })
-      }
+            // setErrs(err.response.data);
 
-      const closeAppointment = (id) => {
+        })
+    }
+
+    const closeAppointment = (id) => {
         axiosConfig.get(`/appointment/close/${id}`).then((rsp) => {
-          debugger
-         // setResult(rsp.data);
-          axiosConfig.get("/appointment/all").then((rsp) => {
+            debugger
+            // setResult(rsp.data);
+            axiosConfig.get("/appointment/all?pageNumber=1&pageSize=6").then((rsp) => {
+                debugger
+                setResult(rsp.data);
+                setIsReady(true);
+            }, (err) => {
+                debugger
+            })
+
+            //  setRemove("Order cancelled");
+        }, (err) => {
+            // setErrs(err.response.data);
+
+        })
+    }
+    const handlePageChange = (pageNumber) => {
+
+        console.log(`active page is ${pageNumber}`);
+        // const searchPage = { search: keyword, page: pageNumber };
+        //axiosConfig.post("/search", keyword);
+        // this.setState({ activePage: pageNumber });
+        // axiosConfig.post("/search",searchPage).then((rsp) => {
+        axiosConfig.get(`/appointment/all?pageNumber=${pageNumber}&pageSize=6`).then((rsp) => {
+
             debugger
             setResult(rsp.data);
             setIsReady(true);
+            // console.log(rsp.data);
         }, (err) => {
             debugger
         })
-
-        //  setRemove("Order cancelled");
-        }, (err) => {
-         // setErrs(err.response.data);
-    
-        })
-      }
-
-      const printAppointment = (id) => {
+    }
+    const printAppointment = (id) => {
         axiosConfig.get(`/appointment/print/${id}`, { responseType: 'blob' }).then((rsp) => {
-          debugger
-          // saveAs(rsp.blob,'order_recipt.pdf');
-          fileDownload(rsp.data, "appointment_"+id+".pdf");
-    
+            debugger
+            // saveAs(rsp.blob,'order_recipt.pdf');
+            fileDownload(rsp.data, "appointment_" + id + ".pdf");
+
         }, (err) => {
-          //setErrs(err.response.data);
-    
+            //setErrs(err.response.data);
+
         })
-       
-      }
+
+    }
 
 
     if (!isReady) {
@@ -93,7 +109,7 @@ const RcpAppointment = () => {
                 <th>Status</th>
 
                 {
-                    result?.map((appointment, index) =>
+                    result.Data.map((appointment, index) =>
                         <tbody align="center">
                             {/* <td>{index + 1}</td> */}
                             {/* <td><Link to={`/details/order/${order.order_id}`}>#{order.order_id}</Link></td> */}
@@ -108,23 +124,34 @@ const RcpAppointment = () => {
                                     <button class='btn btn-warning'><Link class='text text-dark' to={`/appointment/modify/${appointment.Id}`}>Modify</Link></button>
                                 }
                                 {
-                                    appointment.Status == 'Open' && 
+                                    appointment.Status == 'Open' &&
                                     <button class='btn btn-danger' onClick={() => cancelAppointment(appointment.Id)}>Cancel</button>
                                 }
-                                 {
-                                    (appointment.Status == 'Paid' &&  appointment.Status != 'Closed') &&
+                                {
+                                    (appointment.Status == 'Paid' && appointment.Status != 'Closed') &&
                                     <button class='btn btn-success' onClick={() => closeAppointment(appointment.Id)}>Close</button>
                                 }
                                 {
-                                    (appointment.Status == 'Paid' ||  appointment.Status == 'Closed') &&
+                                    (appointment.Status == 'Paid' || appointment.Status == 'Closed') &&
                                     <button class='btn btn-info' onClick={() => printAppointment(appointment.Id)}>Print</button>
                                 }
-                            </td>           
+                            </td>
                         </tbody>
                     )
                 }
 
             </table>
+            <br />
+            <div class="pagination justify-content-center">
+
+                <Pagination
+                    activePage={result.Page.CurrentPage}
+                    itemsCountPerPage={result.Page.PageSize}
+                    totalItemsCount={result.Page.TotalCount}
+                    pageRangeDisplayed={5}
+                    onChange={handlePageChange.bind(this)}
+                    itemClass="page-item"
+                    linkClass="page-link" /></div>
 
         </div >
     )

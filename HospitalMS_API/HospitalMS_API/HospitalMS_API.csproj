@@ -110,6 +110,8 @@
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StatController.cs" />
+    <Compile Include="Filter\PaginationFilter.cs" />
+    <Compile Include="Filter\PagingModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
