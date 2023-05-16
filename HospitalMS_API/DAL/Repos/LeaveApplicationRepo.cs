@@ -12,27 +12,34 @@ namespace DAL.Repos
     {
         public LeaveApplication Create(LeaveApplication obj)
         {
-            throw new NotImplementedException();
+            db.LeaveApplications.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var exLeave = Get(id);
+            db.LeaveApplications.Remove(exLeave);
+            return db.SaveChanges() > 0;
         }
 
         public List<LeaveApplication> Get()
         {
-            throw new NotImplementedException();
+            return db.LeaveApplications.ToList();
         }
 
         public LeaveApplication Get(int id)
         {
-            throw new NotImplementedException();
+            return db.LeaveApplications.Find(id);
         }
 
         public LeaveApplication Update(LeaveApplication obj)
         {
-            throw new NotImplementedException();
+            var exLeave = Get(obj.Id);
+            db.Entry(exLeave).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            return null;
         }
     }
 }

@@ -55,6 +55,10 @@ namespace DAL
         {
             return new CabinRepo();
         }
+        public static IRepo<LeaveApplication, int, LeaveApplication> LeaveApplicationData()
+        {
+            return new LeaveApplicationRepo();
+        }
 
         public static IRepo<DiagList, int, DiagList> DiagListData()
         {

@@ -18,7 +18,7 @@ namespace HospitalMS_API.Filter
         public PaginationFilter(int resourceCount, int pageSize, int pageNumber)
         {
             this.TotalCount = resourceCount;
-            this.PageSize = pageSize;
+            this.PageSize = pageSize > TotalCount ? TotalCount : pageSize;
             this.CurrentPage = pageNumber;
             this.TotalPages = (int)Math.Ceiling(resourceCount / (double)pageSize);
             this.PreviousPage = CurrentPage > 1 ? (CurrentPage - 1) : 1;

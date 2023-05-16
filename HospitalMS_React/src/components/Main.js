@@ -19,6 +19,8 @@ import EditDoctor from "./admin/EditDoctor";
 import EditStaff from "./admin/EditStaff";
 import EditDept from "./admin/EditDept";
 import EditPatient from "./receptionist/EditPatient";
+import EditPatientAdmin from "./admin/EditPatientAdmin";
+import LeaveApplicationAll from "./admin/LeaveApplicationsAll";
 
 import RcpDashboard from "./receptionist/RcpDashboard";
 import RcpAppointment from "./receptionist/RcpAppointment";
@@ -29,6 +31,7 @@ import RcpPatient from "./receptionist/RcpPatient";
 import RcpDeptWiseDoctor from "./receptionist/RcpDeptWiseDoctor";
 import RcpBookAppointment from "./receptionist/RcpBookAppointment";
 import ModifyAppointment from "./receptionist/ModifyAppointment";
+import AddPatient from "./receptionist/AddPatient";
 // import ContactUs from "./ContactUs";
 // import SearchResult from "./customer/SearchResult";
 // import Cart from "./customer/Cart";
@@ -90,6 +93,8 @@ const Main = () => {
                     <Route path="/doctor/edit/:id" element={<EditDoctor />} />
                     <Route path="/staff/edit/:id" element={<EditStaff />} />
                     <Route path="/dept/edit/:id" element={<EditDept />} />
+                    <Route path="/admin/patient/edit/:id" element={<EditPatientAdmin />} /> 
+                    <Route path="/admin/leaveapplications/all" element={<LeaveApplicationAll/>} /> 
 
                     <Route path="/receptionist/dashboard" element={<RcpDashboard />} />
                     <Route path="/receptionist/appointment/all" element={<RcpAppointment />} />
@@ -101,11 +106,10 @@ const Main = () => {
                     <Route path="/receptionist/doctor/dept/:id" element={<RcpDeptWiseDoctor />} />
                     <Route path="/appointment/modify/:id" element={<ModifyAppointment />} />
                     <Route path="/patient/edit/:id" element={<EditPatient />} />
+                    <Route path="/patient/register" element={<AddPatient />} />
 
 
                     
-
-
 
                     {/* <Route path="/order_review" element={<AddReview/>} />
                     <Route path="/expense/history" element={<ExpenseHistory/>} /> */}

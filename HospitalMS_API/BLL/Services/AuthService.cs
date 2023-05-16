@@ -14,15 +14,16 @@ namespace BLL.Services
     {
         public static TokenDTO Authenticate(string Username, string Password)
         {
-            var res= DataAccessFactory.AuthData().Authenticate(Username, Password); //true if uname & pass matched,
-                                                                                    //then generate token and return the token to the user
+            var res = DataAccessFactory.AuthData().Authenticate(Username, Password); //true if uname & pass matched,
+                                                                                     //then generate token and return the token to the user
 
             if (res == true)
-            {   var allTkn= DataAccessFactory.TokenData().Get();
+            {
+                var allTkn = DataAccessFactory.TokenData().Get();
                 var exTkn = (from t in allTkn
-                            where t.CreatedBy.Equals(Username) &&
-                            t.ExpiredAt == null
-                            select t).SingleOrDefault();
+                             where t.CreatedBy.Equals(Username) &&
+                             t.ExpiredAt == null
+                             select t).SingleOrDefault();
                 if (exTkn != null)
                 {
                     var cfg = new MapperConfiguration(c =>
@@ -55,7 +56,7 @@ namespace BLL.Services
         public static TokenDTO IsTokenValid(string tkey)//return token obj
         {
             var extk = DataAccessFactory.TokenData().Get(tkey);
-            if(extk != null && extk.ExpiredAt == null)
+            if (extk != null && extk.ExpiredAt == null)
             {
                 var cfg = new MapperConfiguration(c =>
                 {
@@ -80,9 +81,20 @@ namespace BLL.Services
         {
             var extk = DataAccessFactory.TokenData().Get(tkey);
             extk.ExpiredAt = DateTime.Now;
-            if ( DataAccessFactory.TokenData().Update(extk) != null ) return true;
+            if (DataAccessFactory.TokenData().Update(extk) != null) return true;
             return false;
 
+        }
+        public static int TokenUserId(string tkey)//return token User id, for leave application
+        {
+            var token = IsTokenValid(tkey);
+
+            var allStaff = DataAccessFactory.StaffData().Get();
+            var user = (from s in allStaff
+                        where s.Username.Equals(token.CreatedBy)
+                        select s).SingleOrDefault();
+
+            return user.Id;
         }
     }
 }

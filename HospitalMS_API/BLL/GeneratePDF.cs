@@ -31,7 +31,7 @@ namespace BLL
             string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\BLL\\Views\\" + viewName + ".cshtml");
             var viewContent = File.ReadAllText(filePath);
             var result = razorEngineService.RunCompile(viewContent, filePath, null, obj);
-            var count = 0;
+           
             return result;
         }
 

@@ -26,13 +26,13 @@ namespace HospitalMS_API.Controllers
                     pagingModel = new PagingModel();
                     var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
                     var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
-                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page, AvailableDoctor = source.Count(x => x.IsAvailable == true)});
                 }
                 else
                 {
                     var data = source.Skip((pagingModel.PageNumber - 1) * pagingModel.PageSize).Take(pagingModel.PageSize).ToList();
                     var page = new PaginationFilter(source.Count, pagingModel.PageSize, pagingModel.PageNumber);
-                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page });
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Data = data, Page = page, AvailableDoctor = source.Count(x => x.IsAvailable == true) });
                 }
             }
             catch (Exception ex)

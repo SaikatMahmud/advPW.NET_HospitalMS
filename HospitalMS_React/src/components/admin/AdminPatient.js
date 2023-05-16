@@ -18,7 +18,7 @@ const AdminPatient = () => {
         axiosConfig.get("/patient/all?pageNumber=1&pageSize=6").then((rsp) => {
             debugger
             setResult(rsp.data);
-            setTotalPatients(rsp.data.length);
+            setTotalPatients(rsp.data.Page.TotalCount);
             // setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
             setIsReady(true);
         }, (err) => {
@@ -58,11 +58,31 @@ const AdminPatient = () => {
 
             debugger
             setResult(rsp.data);
-            setTotalPatients(rsp.data.length);
+            setTotalPatients(rsp.data.Page.TotalCount);
             setIsReady(true);
             // console.log(rsp.data);
         }, (err) => {
             debugger
+        })
+    }
+    const deletePatient = (id) => {
+        axiosConfig.post(`/patient/delete/${id}`).then((rsp) => {
+            debugger
+            axiosConfig.get("/patient/all?pageNumber=1&pageSize=6").then((rsp) => {
+                debugger
+                setResult(rsp.data);
+                setTotalPatients(rsp.data.Page.TotalCount);
+                // setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
+                setIsReady(true);
+            }, (err) => {
+                debugger
+            })
+            setDelete("Patient deleted!");
+            setIsReady(true);
+        }, (err) => {
+            debugger
+            // setErrs(err.response.data);
+
         })
     }
 
@@ -103,6 +123,10 @@ const AdminPatient = () => {
                             <td>{patient.OPDCount}</td>
                             <td>{patient.IPDCount}</td>
                             <td>{patient.TotalPaid}</td>
+                            <td>
+                            <button class='btn btn-warning'><Link class='text text-dark' to={`/admin/patient/edit/${patient.Id}`}> Edit</Link></button>
+                            <button class='btn btn-danger ' onClick={() => deletePatient(patient.Id)}>Delete</button>
+                            </td>
                             {/* <td>
                             <button class='btn btn-warning'><Link class='text text-dark' to={`/doctor/edit/${doctor.Id}`}> Edit</Link></button>
                             <button class='btn btn-danger ' onClick={() => deleteDoctor(doctor.Id)}>Delete</button>

@@ -58,11 +58,11 @@ const RcpDeptWiseDoctor = () => {
                             <td>{doctor.Designation}</td>
                             <td>{doctor.Gender}</td>
                             <td>{doctor.Room}</td>
-                            {doctor.isAvailable ? (
-                                <span style={{ backgroundColor: 'green', width: '15px', height: '15px', borderRadius: '50%', display: 'inline-block', marginLeft: '5px' }}></span>
-                            ) : (
-                                <span style={{ backgroundColor: 'red', width: '15px', height: '15px', borderRadius: '50%', display: 'inline-block', marginLeft: '5px' }}></span>
-                            )}
+                            {(doctor.IsAvailable) ?
+                                (<span style={{ backgroundColor: 'green', width: '15px', height: '15px', borderRadius: '50%', display: 'inline-block', marginLeft: '5px' }}></span>
+                                ) :
+                                (<span style={{ backgroundColor: 'red', width: '15px', height: '15px', borderRadius: '50%', display: 'inline-block', marginLeft: '5px' }}></span>
+                                )}
                             {/* <td>{doctor.IsAvailable}</td> */}
                             <td>{doctor.StayFrom}</td>
                             <td>{doctor.StayTill}</td>

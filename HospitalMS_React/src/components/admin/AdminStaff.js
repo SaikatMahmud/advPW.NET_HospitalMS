@@ -17,7 +17,7 @@ const AdminStaff = () => {
         axiosConfig.get("/staff/all?pageNumber=1&pageSize=6").then((rsp) => {
             debugger
             setResult(rsp.data);
-            setTotalStaffs(rsp.data.length);
+            setTotalStaffs(rsp.data.Page.TotalCount);
             // setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
             setIsReady(true);
         }, (err) => {
@@ -32,7 +32,7 @@ const AdminStaff = () => {
             axiosConfig.get("/staff/all?pageNumber=1&pageSize=6").then((rsp) => {
                 //debugger
                 setResult(rsp.data);
-                setTotalStaffs(rsp.data.length);
+                setTotalStaffs(rsp.data.Page.TotalCount);
                 // setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
             }, (err) => {
                 debugger
@@ -56,7 +56,7 @@ const AdminStaff = () => {
 
             debugger
             setResult(rsp.data);
-            setTotalStaffs(rsp.data.length);
+            setTotalStaffs(rsp.data.Page.TotalCount);
             setIsReady(true);
             // console.log(rsp.data);
         }, (err) => {

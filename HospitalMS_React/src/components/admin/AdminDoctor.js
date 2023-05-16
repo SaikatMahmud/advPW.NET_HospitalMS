@@ -16,8 +16,8 @@ const AdminDoctor = () => {
         axiosConfig.get("/doctor/all?pageNumber=1&pageSize=6").then((rsp) => {
             debugger
             setResult(rsp.data);
-            setTotalDoctors(rsp.data.Data.length);
-            setAvailableDoctors(rsp.data.Data.filter(d => d.IsAvailable == true).length)
+            setTotalDoctors(rsp.data.Page.TotalCount);
+            setAvailableDoctors(rsp.data.AvailableDoctor);
             setIsReady(true);
         }, (err) => {
             debugger
@@ -31,8 +31,8 @@ const AdminDoctor = () => {
             axiosConfig.get("/doctor/all?pageNumber=1&pageSize=6").then((rsp) => {
                 //debugger
                 setResult(rsp.data);
-                setTotalDoctors(rsp.data.Data.length);
-                setAvailableDoctors(rsp.data.Data.filter(d => d.IsAvailable == true).length)
+                setTotalDoctors(rsp.data.Page.TotalCount);
+                setAvailableDoctors(rsp.data.AvailableDoctor);
                 debugger
             }, (err) => {
                 debugger
@@ -56,8 +56,8 @@ const AdminDoctor = () => {
 
             debugger
             setResult(rsp.data);
-            setTotalDoctors(rsp.data.Data.length);
-            setAvailableDoctors(rsp.data.Data.filter(d => d.IsAvailable == true).length)
+            setTotalDoctors(rsp.data.Page.TotalCount);
+            setAvailableDoctors(rsp.data.AvailableDoctor);
             setIsReady(true);
             // console.log(rsp.data);
         }, (err) => {

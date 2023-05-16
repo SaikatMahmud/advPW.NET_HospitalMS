@@ -18,7 +18,7 @@ const RcpPatient = () => {
         axiosConfig.get("/receptionist/patient/all?pageNumber=1&pageSize=6").then((rsp) => {
             debugger
             setResult(rsp.data);
-            setTotalPatients(rsp.data.length);
+            setTotalPatients(rsp.data.Page.TotalCount);
            // setAvailableDoctors(rsp.data.filter(d => d.IsAvailable == true).length)
             setIsReady(true);
         }, (err) => {
@@ -38,7 +38,7 @@ const RcpPatient = () => {
             debugger
             setResult(rsp.data);
             setResult(rsp.data);
-            setTotalPatients(rsp.data.length);
+            setTotalPatients(rsp.data.Page.TotalCount);
             setIsReady(true);
             // console.log(rsp.data);
         }, (err) => {
@@ -75,9 +75,10 @@ const RcpPatient = () => {
         <div align='center'>
             <br /><br />
             <p align="center"><b>Patient list</b></p>
-            <span><b>Registered:  {totalPatients}</b></span><br/><span></span><br/>
+            <span><b>Registered:  {totalPatients}</b></span><br/><span></span>
             {/* <span><b>Available:{availableDoctors}</b></span><br/> */}
             <span><b><i>{msgDelete ? msgDelete : ''}</i></b><br /></span>
+            <button class='btn btn-success'><Link class='text text-light' to={`/patient/register`}>Register New</Link></button>
             <table border="2" align="center" class="table">
 
                 <th>Patient ID</th>
@@ -92,7 +93,7 @@ const RcpPatient = () => {
                             {/* <td><Link to={`/details/order/${order.order_id}`}>#{order.order_id}</Link></td> */}
                             <td>{patient.Id}</td>
                             <td>{patient.Name}</td>
-                            <td>{patient.DOB}</td>
+                            <td>{new Date(patient.DOB).toLocaleDateString('en-CA')}</td>
                             <td>{patient.Gender}</td>
                             {/* <td>{patient.BloodGroup}</td>
                             <td>{patient.Department.Name}</td>

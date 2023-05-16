@@ -151,6 +151,18 @@
     <Compile Include="Migrations\202305141654388_performDiagFix4.designer.cs">
       <DependentUpon>202305141654388_performDiagFix4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305152138121_leaveApplicationFix.cs" />
+    <Compile Include="Migrations\202305152138121_leaveApplicationFix.designer.cs">
+      <DependentUpon>202305152138121_leaveApplicationFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305152140333_leaveApplicationFix2.cs" />
+    <Compile Include="Migrations\202305152140333_leaveApplicationFix2.designer.cs">
+      <DependentUpon>202305152140333_leaveApplicationFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305152156450_leaveApplicationFix3.cs" />
+    <Compile Include="Migrations\202305152156450_leaveApplicationFix3.designer.cs">
+      <DependentUpon>202305152156450_leaveApplicationFix3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -272,6 +284,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305141654388_performDiagFix4.resx">
       <DependentUpon>202305141654388_performDiagFix4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305152138121_leaveApplicationFix.resx">
+      <DependentUpon>202305152138121_leaveApplicationFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305152140333_leaveApplicationFix2.resx">
+      <DependentUpon>202305152140333_leaveApplicationFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305152156450_leaveApplicationFix3.resx">
+      <DependentUpon>202305152156450_leaveApplicationFix3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

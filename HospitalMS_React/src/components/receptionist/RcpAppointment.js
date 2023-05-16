@@ -116,7 +116,7 @@ const RcpAppointment = () => {
                             <td>{appointment.PatientId}</td>
                             <td>{appointment.Patient.Name}</td>
                             <td>{appointment.Doctor.Name}</td>
-                            <td>{appointment.ScheduleDate}, {appointment.ScheduleTime}</td>
+                            <td>{new Date(appointment.ScheduleDate).toLocaleDateString('en-CA')}, {appointment.ScheduleTime}</td>
                             <td>{appointment.Status}</td>
                             <td>
                                 {

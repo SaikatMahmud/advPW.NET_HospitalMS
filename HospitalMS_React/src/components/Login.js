@@ -24,7 +24,8 @@ const Login = () => {
                     // navigate({ pathname: '/admin/doctor/list' });
                 }
                 if (succ.data.userType =="Receptionist") {
-                    navigate({ pathname: '/receptionist/dashboard' });
+                    // navigate({ pathname: '/receptionist/dashboard' });
+                    navigate({ pathname: '/receptionist/doctors' });
                 }
                 //navigate({ pathname: '/' });
                 window.location.reload();

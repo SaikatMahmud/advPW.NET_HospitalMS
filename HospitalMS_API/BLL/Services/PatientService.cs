@@ -5,6 +5,7 @@ using DAL.Models;
 using DAL.Repos;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -28,7 +29,7 @@ namespace BLL.Services
             var cfg = new MapperConfiguration(c =>
             {
                 c.CreateMap<Patient, PatientDTO>();
-               
+
             });
             var mapper = new Mapper(cfg);
             return mapper.Map<List<PatientDTO>>(data);
@@ -37,13 +38,26 @@ namespace BLL.Services
         {
             return Convert(DataAccessFactory.PatientData().Get(id));
         }
-       
+
         public static bool Create(PatientDTO patient)
         {
             var data = Convert(patient);
             var res = DataAccessFactory.PatientData().Create(data);
 
-            if (res != null) return true;
+            if (res != null)
+            {
+                var user = new User()
+                {
+                    Username = patient.Username,
+                    Password = Guid.NewGuid().ToString().Substring(0, 5),
+                    Type = "Patient"
+                };
+                _ = Task.Run(() => SendEmail.SendNewUserEmail(patient.Email, user.Password, user.Type));
+                DataAccessFactory.UserData().Create(user);
+
+
+                return true;
+            }
             return false;
         }
         public static bool Update(PatientDTO patient)

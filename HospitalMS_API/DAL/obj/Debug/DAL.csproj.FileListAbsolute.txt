@@ -35,3 +35,6 @@ D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\D
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.performDiagFix2.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.performDiagFix3.resources
 D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.performDiagFix4.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.leaveApplicationFix.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.leaveApplicationFix2.resources
+D:\A I U B\Adv .NET Git\Hospital_Management_System-repo\HospitalMS_API\DAL\obj\Debug\DAL.Migrations.leaveApplicationFix3.resources

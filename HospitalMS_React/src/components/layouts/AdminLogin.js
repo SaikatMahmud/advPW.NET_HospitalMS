@@ -11,7 +11,8 @@ const AdminLogin = () => {
             <span> <Link to="/admin/dept/list"> Departments </Link></span>|
             <span> <Link to="/admin/patient/list"> Patients </Link></span>|
             <span> <Link to="/admin/statistics"> Stats </Link></span>|
-            <span> <Link to="/admin/finance"> Finance</Link></span>
+            <span> <Link to="/admin/leaveapplications/all"> Leave Applications </Link></span>|
+            {/* <span> <Link to="/admin/finance"> Finance</Link></span> */}
             &emsp; &emsp; &emsp; &emsp; 
             
             {/* <span> <Link to="/editProfile"> Edit profile</Link> </span>|
