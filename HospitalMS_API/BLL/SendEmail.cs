@@ -11,10 +11,11 @@ namespace BLL
 {
     public class SendEmail
     {
+         //tested for MS365 
         public static async Task SendNewUserEmail(string email, string password, string userType)
         {
             string to = email;    
-            string from = "19-41556-3@student.aiub.edu";  
+            string from = "my email";  
             MailMessage message = new MailMessage(from, to);
 
             string mailbody = "Hi, Your temporary password is " + password + ". Use this to login as " + userType + ".";
@@ -24,7 +25,7 @@ namespace BLL
             message.IsBodyHtml = true;
             SmtpClient client = new SmtpClient("smtp.office365.com", 587);
             System.Net.NetworkCredential basicCredential1 = new
-            System.Net.NetworkCredential("19-41556-3@student.aiub.edu", /*pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp*/"password");
+            System.Net.NetworkCredential("my email", /*pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp*/"Password");
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             client.EnableSsl = true;
