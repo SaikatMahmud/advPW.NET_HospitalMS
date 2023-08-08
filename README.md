@@ -1,4 +1,4 @@
-Implemented ASP.NET Web API, JWT, ReactJs. Have done the admin & receptionist part. <br/>
+Implemented ASP.NET Web API, JWT, ReactJs. Have done the Admin & Receptionist part. <br/>
 Some features include:
 - User login
 - Admin dashboard
