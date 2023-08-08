@@ -8,6 +8,6 @@ Some features include:
 - Receptionist dashboard
 - Appointments management dynamically with doctor's availability [Receptionist]
 - Patient, OPD management [Receptionist]
-- PDF of appointment details, OPD bill details [Receptionist]
+- PDF of appointment details, OPD bill details using iText7 [Receptionist]
 - Temporary password via email for patient portal after new patient registration [Receptionist]
 - Leave application [Receptionist]
