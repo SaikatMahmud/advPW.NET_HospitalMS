@@ -1,5 +1,4 @@
-Implemented ASP.NET Web API, JWT, ReactJs. Have done the Admin & Receptionist part. <br/>
-Some features include:
+Implemented features include:
 - User login
 - Admin dashboard
 - Doctor/Staff/Dept/Patient detailed view & management [Admin]
